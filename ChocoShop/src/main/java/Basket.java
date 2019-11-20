@@ -2,13 +2,13 @@ import java.util.ArrayList;
 
 public class Basket {
 
-    private ArrayList<OrderLine> order;
+    private ArrayList<OrderLine> order = new ArrayList<>();
 
     private PromoCodes promoCode;
 
 
-    public void put(Chocolate chocolate, int quantity){
-        order.add(new OrderLine(chocolate, quantity));
+    public void put(OrderLine orderLine){
+        order.add(orderLine);
     }
 
     public void remove(int index){
