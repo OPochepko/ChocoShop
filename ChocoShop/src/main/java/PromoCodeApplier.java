@@ -1,9 +1,9 @@
 
 public class PromoCodeApplier {
 
-    public static double applyPromoCode(PromoCodes code, double cost){
+    public static int applyPromoCode(PromoCodes code, int cost){
 
-        double costWithPromo = cost * (100 - code.getPercentDiscount())/100 - code.getFixDiscount(); ;
+        int costWithPromo = cost * (100 - code.getPercentDiscount())/100 - code.getFixDiscount(); ;
 
         return costWithPromo;
     }

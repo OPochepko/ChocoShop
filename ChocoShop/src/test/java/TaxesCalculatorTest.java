@@ -7,18 +7,18 @@ class TaxesCalculatorTest {
 
     @Test
     void calculateTaxes() {
-        int costWithTaxesCents;
+        int costWithTaxes;
 
-        costWithTaxesCents = (int) TaxesCalculator.calculateTaxes(150) * 100;
+        costWithTaxes = (TaxesCalculator.calculateTaxes(109));
 
-        Assertions.assertEquals(costWithTaxesCents, 16800);
+        Assertions.assertEquals(costWithTaxes, 122);
 
-        costWithTaxesCents = (int) TaxesCalculator.calculateTaxes(100) * 100;
+        costWithTaxes = (TaxesCalculator.calculateTaxes(100));
 
-        Assertions.assertEquals(costWithTaxesCents, 11200);
+        Assertions.assertEquals(costWithTaxes, 112);
 
-        costWithTaxesCents = (int) TaxesCalculator.calculateTaxes(50) * 100;
+        costWithTaxes = (TaxesCalculator.calculateTaxes(50));
 
-        Assertions.assertEquals(costWithTaxesCents, 6200);
+        Assertions.assertEquals(costWithTaxes, 62);
     }
 }

@@ -19,11 +19,11 @@ public class Basket {
             return quantity;
         }
 
-        public double getFullPrice() {
+        public int getFullPrice() {
             return fullPrice;
         }
 
-        private double fullPrice;
+        private int fullPrice;
 
         public OrderLine(Chocolate chocolate, int quantity) {
             this.chocolate = chocolate;

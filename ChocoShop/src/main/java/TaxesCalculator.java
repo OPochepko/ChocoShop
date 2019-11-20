@@ -1,5 +1,5 @@
 public class TaxesCalculator {
-    public static double calculateTaxes(double price){
-        return price > 100 ? price * 1.12 : price + 12;
+    public static int calculateTaxes(int price){
+        return price > 100 ? (int) (price * 1.12) : price + 12;
     }
 }
