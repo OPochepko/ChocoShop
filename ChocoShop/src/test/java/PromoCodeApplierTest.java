@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class PromoCodeApplierTest {
     PromoCodes promoCodes = Mockito.mock(PromoCodes.class);
 
+    PromoCodeApplier promoCodeApplier = new PromoCodeApplier();
+
 
     @Test
     void applyPromoCode10Percent() {
@@ -16,7 +18,7 @@ class PromoCodeApplierTest {
 
         Mockito.when(promoCodes.getPercentDiscount()).thenReturn(10);
 
-        Assertions.assertEquals(PromoCodeApplier.applyPromoCode(promoCodes, 100), 90);
+        Assertions.assertEquals(promoCodeApplier.applyPromoCode(promoCodes, 100), 90);
 
 
     }
@@ -28,7 +30,7 @@ class PromoCodeApplierTest {
 
         Mockito.when(promoCodes.getPercentDiscount()).thenReturn(0);
 
-        Assertions.assertEquals(PromoCodeApplier.applyPromoCode(promoCodes, 100), 85);
+        Assertions.assertEquals(promoCodeApplier.applyPromoCode(promoCodes, 100), 85);
 
 
     }

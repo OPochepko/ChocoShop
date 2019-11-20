@@ -5,19 +5,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TaxesCalculatorTest {
 
+    TaxesCalculator taxesCalculator = new TaxesCalculator();
+
     @Test
     void calculateTaxes() {
         int costWithTaxes;
 
-        costWithTaxes = (TaxesCalculator.calculateTaxes(109));
+        costWithTaxes = (taxesCalculator.calculateTaxes(109));
 
         Assertions.assertEquals(costWithTaxes, 122);
 
-        costWithTaxes = (TaxesCalculator.calculateTaxes(100));
+        costWithTaxes = (taxesCalculator.calculateTaxes(100));
 
         Assertions.assertEquals(costWithTaxes, 112);
 
-        costWithTaxes = (TaxesCalculator.calculateTaxes(50));
+        costWithTaxes = (taxesCalculator.calculateTaxes(50));
 
         Assertions.assertEquals(costWithTaxes, 62);
     }
