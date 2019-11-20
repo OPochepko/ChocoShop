@@ -16,7 +16,7 @@ class PromoCodeApplierTest {
 
         Mockito.when(promoCodes.getPercentDiscount()).thenReturn(10);
 
-        Assertions.assertEquals(PromoCodeApplier.applyPromoCode(promoCodes, 100), 90d);
+        Assertions.assertEquals(PromoCodeApplier.applyPromoCode(promoCodes, 100), 90);
 
 
     }
@@ -28,7 +28,7 @@ class PromoCodeApplierTest {
 
         Mockito.when(promoCodes.getPercentDiscount()).thenReturn(0);
 
-        Assertions.assertEquals(PromoCodeApplier.applyPromoCode(promoCodes, 100), 85d);
+        Assertions.assertEquals(PromoCodeApplier.applyPromoCode(promoCodes, 100), 85);
 
 
     }
