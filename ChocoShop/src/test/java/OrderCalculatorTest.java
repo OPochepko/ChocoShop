@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderCalculatorTest {
+
+    static OrderCalculator orderCalculator;
 
     static Basket basket;
 
@@ -35,17 +38,35 @@ class OrderCalculatorTest {
 
         order.add(orderLine2);
 
+
         basket = Mockito.mock(Basket.class);
 
         Mockito.when(basket.getOrder()).thenReturn(order);
 
+
         promoCode = Mockito.mock(PromoCodes.class);
 
-        Mockito.when(promoCode.getPercentDiscount()).thenReturn(10);
-
-        Mockito.when(promoCode.getFixDiscount()).thenReturn(10);
-
         Mockito.when(basket.getPromoCode()).thenReturn(promoCode);
+
+
+        promoCodeApplier = Mockito.mock(PromoCodeApplier.class);
+
+        Mockito.when(promoCodeApplier.applyPromoCode(Mockito.any(PromoCodes.class),Mockito.any(Integer.class)))
+                .thenReturn(100);
+
+
+        taxesCalculator = Mockito.mock(TaxesCalculator.class);
+
+        Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
+
+
+        orderCalculator = new OrderCalculator();
+
+        orderCalculator.taxesCalculator = taxesCalculator;
+
+        orderCalculator.promoCodeApplier = promoCodeApplier;
+
+
 
 
 
@@ -53,5 +74,7 @@ class OrderCalculatorTest {
     }
     @Test
     void calculateOrderPrice() {
+
+        Assertions.assertEquals(orderCalculator.calculateOrderPrice(basket),100);
     }
 }

@@ -1,10 +1,11 @@
 public class OrderCalculator {
+
+    TaxesCalculator taxesCalculator = new TaxesCalculator();
+
+    PromoCodeApplier promoCodeApplier = new PromoCodeApplier();
+
     public int calculateOrderPrice(Basket basket){
         int finalCost = 0;
-
-        TaxesCalculator taxesCalculator = new TaxesCalculator();
-
-        PromoCodeApplier promoCodeApplier = new PromoCodeApplier();
 
         for (OrderLine orderLine : basket.getOrder()){
             finalCost+=taxesCalculator.calculateTaxes(orderLine.getFullPrice());
