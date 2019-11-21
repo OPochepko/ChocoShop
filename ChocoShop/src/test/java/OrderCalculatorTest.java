@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,16 +6,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorTest {
-
-    private Basket basket;
-
-    private OrderLine orderLine1, orderLine2;
-
-    private PromoCodes promoCode;
 
     @Mock private PromoCodeApplier promoCodeApplier;
 
@@ -26,8 +19,7 @@ class OrderCalculatorTest {
 
     @Test
     void calculateOrderPrice() {
-
-        basket = new Basket();
+        Basket basket = new Basket();;
 
         basket.setPromoCode(PromoCodes.DECIMATION);
 
@@ -40,6 +32,6 @@ class OrderCalculatorTest {
 
         Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
 
-        Assertions.assertEquals(orderCalculator.calculateOrderPrice(basket),200);
+        assertThat(orderCalculator.calculateOrderPrice(basket)).isEqualTo(200);
     }
 }

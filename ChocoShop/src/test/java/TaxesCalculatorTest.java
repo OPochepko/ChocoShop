@@ -1,7 +1,6 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class TaxesCalculatorTest {
 
@@ -11,16 +10,11 @@ class TaxesCalculatorTest {
     void calculateTaxes() {
         int costWithTaxes;
 
-        costWithTaxes = (taxesCalculator.calculateTaxes(109));
+        assertThat(taxesCalculator.calculateTaxes(109)).isEqualTo(122);
 
-        Assertions.assertEquals(costWithTaxes, 122);
+        assertThat(taxesCalculator.calculateTaxes(100)).isEqualTo(112);
 
-        costWithTaxes = (taxesCalculator.calculateTaxes(100));
+        assertThat(taxesCalculator.calculateTaxes(50)).isEqualTo(62);
 
-        Assertions.assertEquals(costWithTaxes, 112);
-
-        costWithTaxes = (taxesCalculator.calculateTaxes(50));
-
-        Assertions.assertEquals(costWithTaxes, 62);
     }
 }
