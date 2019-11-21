@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 
 class TaxesCalculatorTest {
 
@@ -15,6 +16,7 @@ class TaxesCalculatorTest {
         assertThat(taxesCalculator.calculateTaxes(100)).isEqualTo(112);
 
         assertThat(taxesCalculator.calculateTaxes(50)).isEqualTo(62);
+
 
     }
 }

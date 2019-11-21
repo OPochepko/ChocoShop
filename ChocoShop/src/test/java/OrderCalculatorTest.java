@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorTest {
@@ -32,6 +33,14 @@ class OrderCalculatorTest {
 
         Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
 
+
         assertThat(orderCalculator.calculateOrderPrice(basket)).isEqualTo(200);
+
+        verify(taxesCalculator, Mockito.times(2))
+                .calculateTaxes(Mockito.any(Integer.class));
+
+        verify(promoCodeApplier,Mockito.times(1))
+                .applyPromoCode(basket.getPromoCode(),100);
+
     }
 }
