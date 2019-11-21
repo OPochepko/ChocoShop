@@ -1,8 +1,13 @@
 public class OrderCalculator {
 
-    TaxesCalculator taxesCalculator = new TaxesCalculator();
+    private TaxesCalculator taxesCalculator;
 
-    PromoCodeApplier promoCodeApplier = new PromoCodeApplier();
+    private PromoCodeApplier promoCodeApplier;
+
+    public OrderCalculator(TaxesCalculator taxesCalculator, PromoCodeApplier promoCodeApplier) {
+        this.taxesCalculator = taxesCalculator;
+        this.promoCodeApplier = promoCodeApplier;
+    }
 
     public int calculateOrderPrice(Basket basket){
         int finalCost = 0;

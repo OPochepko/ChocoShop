@@ -1,38 +1,37 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@ExtendWith(MockitoExtension.class)
 class OrderCalculatorTest {
 
-    static OrderCalculator orderCalculator;
+    @Mock Basket basket;
 
-    static Basket basket;
+    @Mock OrderLine orderLine1, orderLine2;
 
-    static OrderLine orderLine1, orderLine2;
+    @Mock PromoCodes promoCode;
 
-    static PromoCodes promoCode;
+    @Mock PromoCodeApplier promoCodeApplier;
 
-    static PromoCodeApplier promoCodeApplier;
+    @Mock TaxesCalculator taxesCalculator;
 
-    static TaxesCalculator taxesCalculator;
+    @InjectMocks OrderCalculator orderCalculator;
 
-    @BeforeAll
-    static void setUp(){
+    @Test
+    void calculateOrderPrice() {
+
         ArrayList<OrderLine> order = new ArrayList<OrderLine>();
-
-        orderLine1 = Mockito.mock(OrderLine.class);
 
         Mockito.when(orderLine1.getFullPrice()).thenReturn(10);
 
         order.add(orderLine1);
-
-        orderLine2 = Mockito.mock(OrderLine.class);
 
         Mockito.when(orderLine2.getFullPrice()).thenReturn(10);
 
@@ -43,37 +42,12 @@ class OrderCalculatorTest {
 
         Mockito.when(basket.getOrder()).thenReturn(order);
 
-
-        promoCode = Mockito.mock(PromoCodes.class);
-
         Mockito.when(basket.getPromoCode()).thenReturn(promoCode);
-
-
-        promoCodeApplier = Mockito.mock(PromoCodeApplier.class);
 
         Mockito.when(promoCodeApplier.applyPromoCode(promoCode,100))
                 .thenReturn(200);
 
-
-        taxesCalculator = Mockito.mock(TaxesCalculator.class);
-
         Mockito.when(taxesCalculator.calculateTaxes(10)).thenReturn(50);
-
-
-        orderCalculator = new OrderCalculator();
-
-        orderCalculator.taxesCalculator = taxesCalculator;
-
-        orderCalculator.promoCodeApplier = promoCodeApplier;
-
-
-
-
-
-
-    }
-    @Test
-    void calculateOrderPrice() {
 
         Assertions.assertEquals(orderCalculator.calculateOrderPrice(basket),200);
     }
