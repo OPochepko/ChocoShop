@@ -12,42 +12,33 @@ import java.util.ArrayList;
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorTest {
 
-    @Mock Basket basket;
+    private Basket basket;
 
-    @Mock OrderLine orderLine1, orderLine2;
+    private OrderLine orderLine1, orderLine2;
 
-    @Mock PromoCodes promoCode;
+    private PromoCodes promoCode;
 
-    @Mock PromoCodeApplier promoCodeApplier;
+    @Mock private PromoCodeApplier promoCodeApplier;
 
-    @Mock TaxesCalculator taxesCalculator;
+    @Mock private TaxesCalculator taxesCalculator;
 
-    @InjectMocks OrderCalculator orderCalculator;
+    @InjectMocks private OrderCalculator orderCalculator;
 
     @Test
     void calculateOrderPrice() {
 
-        ArrayList<OrderLine> order = new ArrayList<OrderLine>();
+        basket = new Basket();
 
-        Mockito.when(orderLine1.getFullPrice()).thenReturn(10);
+        basket.setPromoCode(PromoCodes.DECIMATION);
 
-        order.add(orderLine1);
+        basket.put(new OrderLine(new Chocolate(25, "TWINX"),5));
 
-        Mockito.when(orderLine2.getFullPrice()).thenReturn(10);
+        basket.put(new OrderLine(new Chocolate(10, "BOUNCY"),8));
 
-        order.add(orderLine2);
-
-
-        basket = Mockito.mock(Basket.class);
-
-        Mockito.when(basket.getOrder()).thenReturn(order);
-
-        Mockito.when(basket.getPromoCode()).thenReturn(promoCode);
-
-        Mockito.when(promoCodeApplier.applyPromoCode(promoCode,100))
+        Mockito.when(promoCodeApplier.applyPromoCode(basket.getPromoCode(),100))
                 .thenReturn(200);
 
-        Mockito.when(taxesCalculator.calculateTaxes(10)).thenReturn(50);
+        Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
 
         Assertions.assertEquals(orderCalculator.calculateOrderPrice(basket),200);
     }

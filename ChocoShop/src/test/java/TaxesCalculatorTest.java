@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TaxesCalculatorTest {
 
-    TaxesCalculator taxesCalculator = new TaxesCalculator();
+    private TaxesCalculator taxesCalculator = new TaxesCalculator();
 
     @Test
     void calculateTaxes() {

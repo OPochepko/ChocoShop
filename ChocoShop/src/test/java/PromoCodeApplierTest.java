@@ -12,38 +12,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 class PromoCodeApplierTest {
 
-    @Mock
-    PromoCodes promoCodes;
+    private PromoCodes promoCodes = PromoCodes.DECIMATION;
 
-    static PromoCodeApplier promoCodeApplier;
-
-    @BeforeAll
-    static void setUp() {
-        promoCodeApplier = new PromoCodeApplier();
-    }
+    private PromoCodeApplier promoCodeApplier = new PromoCodeApplier();
 
     @Test
-    void applyPromoCode10Percent() {
-
-        Mockito.when(promoCodes.getFixDiscount()).thenReturn(0);
-
-        Mockito.when(promoCodes.getPercentDiscount()).thenReturn(10);
+    void applyPromoCode() {
 
         Assertions.assertEquals(promoCodeApplier.applyPromoCode(promoCodes, 100), 90);
     }
-
-    @Test
-    void applyPromoCode10Rubbles() {
-
-        Mockito.when(promoCodes.getFixDiscount()).thenReturn(10);
-
-        Mockito.when(promoCodes.getPercentDiscount()).thenReturn(0);
-
-        Assertions.assertEquals(promoCodeApplier.applyPromoCode(promoCodes, 100), 90);
-
-
-    }
-
 
 
 }
