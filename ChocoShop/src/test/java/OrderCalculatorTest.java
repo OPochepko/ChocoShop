@@ -51,13 +51,13 @@ class OrderCalculatorTest {
 
         promoCodeApplier = Mockito.mock(PromoCodeApplier.class);
 
-        Mockito.when(promoCodeApplier.applyPromoCode(Mockito.any(PromoCodes.class),Mockito.any(Integer.class)))
-                .thenReturn(100);
+        Mockito.when(promoCodeApplier.applyPromoCode(promoCode,100))
+                .thenReturn(200);
 
 
         taxesCalculator = Mockito.mock(TaxesCalculator.class);
 
-        Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
+        Mockito.when(taxesCalculator.calculateTaxes(10)).thenReturn(50);
 
 
         orderCalculator = new OrderCalculator();
@@ -75,6 +75,6 @@ class OrderCalculatorTest {
     @Test
     void calculateOrderPrice() {
 
-        Assertions.assertEquals(orderCalculator.calculateOrderPrice(basket),100);
+        Assertions.assertEquals(orderCalculator.calculateOrderPrice(basket),200);
     }
 }
