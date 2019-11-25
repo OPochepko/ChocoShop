@@ -2,7 +2,6 @@ package by.pochepko.services;
 
 import by.pochepko.Basket;
 import by.pochepko.OrderLine;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderCalculatorImpl implements OrderCalculator{
 
@@ -10,10 +9,10 @@ public class OrderCalculatorImpl implements OrderCalculator{
 
     private PromoCodeApplier promoCodeApplier;
 
-    @Autowired
     public OrderCalculatorImpl(TaxesCalculator taxesCalculator, PromoCodeApplier promoCodeApplier) {
         this.taxesCalculator = taxesCalculator;
         this.promoCodeApplier = promoCodeApplier;
+        System.out.println("OrderCalculatorImpl is ready");
     }
 
     public int calculateOrderPrice(Basket basket){
