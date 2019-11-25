@@ -1,7 +1,9 @@
 package by.pochepko.services;
 
 import by.pochepko.PromoCodes;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PromoCodeApplierImpl implements PromoCodeApplier{
 
     public int applyPromoCode(PromoCodes code, int cost){

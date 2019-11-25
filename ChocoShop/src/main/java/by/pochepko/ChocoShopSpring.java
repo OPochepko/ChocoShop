@@ -10,7 +10,5 @@ public class ChocoShopSpring {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(ChocoShopConfiguration.class);
 
-        OrderCalculator orderCalculator = context.getBean("orderCalculator", OrderCalculator.class);
-
     }
 }

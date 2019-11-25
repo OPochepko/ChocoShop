@@ -4,7 +4,7 @@ import by.pochepko.services.TaxesCalculatorImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DefaultTaxesCalculatorTest {
+class TaxesCalculatorImplTest {
 
     private TaxesCalculator taxesCalculator = new TaxesCalculatorImpl();
 

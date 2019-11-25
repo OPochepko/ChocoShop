@@ -7,7 +7,7 @@ import by.pochepko.services.PromoCodeApplierImpl;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
-class PromoCodeApplierTest {
+class PromoCodeApplierImplTest {
 
 
     private PromoCodeApplierImpl promoCodeApplier = new PromoCodeApplierImpl();

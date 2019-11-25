@@ -2,26 +2,15 @@ package by.pochepko;
 
 import by.pochepko.services.*;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
 
+@ComponentScan(basePackages = "by.pochepko")
 @Configuration
 
 public class ChocoShopConfiguration {
 
-    @Bean
-    public TaxesCalculator taxesCalculator(){
-        return new TaxesCalculatorImpl();
-    }
-
-    @Bean
-    public PromoCodeApplier promoCodeApplier(){
-        return  new PromoCodeApplierImpl();
-    }
-
-    @Bean
-    public OrderCalculator orderCalculator(){
-        return  new OrderCalculatorImpl(taxesCalculator(),promoCodeApplier());
-    }
 
 
 }

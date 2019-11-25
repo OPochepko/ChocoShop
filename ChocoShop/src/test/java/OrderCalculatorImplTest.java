@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class OrderCalculatorTest {
+class OrderCalculatorImplTest {
 
     @Mock private PromoCodeApplierImpl promoCodeApplier;
 
