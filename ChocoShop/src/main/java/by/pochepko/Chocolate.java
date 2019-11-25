@@ -1,3 +1,5 @@
+package by.pochepko;
+
 public class Chocolate {
 
     private int price;

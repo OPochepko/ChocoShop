@@ -1,3 +1,7 @@
+import by.pochepko.*;
+import by.pochepko.services.OrderCalculatorImpl;
+import by.pochepko.services.PromoCodeApplierImpl;
+import by.pochepko.services.TaxesCalculator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,11 +15,11 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorTest {
 
-    @Mock private PromoCodeApplier promoCodeApplier;
+    @Mock private PromoCodeApplierImpl promoCodeApplier;
 
     @Mock private TaxesCalculator taxesCalculator;
 
-    @InjectMocks private OrderCalculator orderCalculator;
+    @InjectMocks private OrderCalculatorImpl orderCalculator;
 
     @Test
     void calculateOrderPrice() {

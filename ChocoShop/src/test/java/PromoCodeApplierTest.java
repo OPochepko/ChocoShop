@@ -1,7 +1,8 @@
+import by.pochepko.PromoCodes;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import by.pochepko.services.PromoCodeApplierImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PromoCodeApplierTest {
 
 
-    private PromoCodeApplier promoCodeApplier = new PromoCodeApplier();
+    private PromoCodeApplierImpl promoCodeApplier = new PromoCodeApplierImpl();
 
     @Test
     void applyPromoCode() {

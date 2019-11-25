@@ -1,3 +1,5 @@
+package by.pochepko;
+
 public enum PromoCodes {
 
     DECIMATION(0, 10), SENATOR(0, 100);

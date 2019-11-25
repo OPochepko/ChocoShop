@@ -1,10 +1,12 @@
 import org.junit.jupiter.api.Test;
+import by.pochepko.services.TaxesCalculator;
+import by.pochepko.services.TaxesCalculatorImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class TaxesCalculatorTest {
+class DefaultTaxesCalculatorTest {
 
-    private TaxesCalculator taxesCalculator = new TaxesCalculator();
+    private TaxesCalculator taxesCalculator = new TaxesCalculatorImpl();
 
     @Test
     void calculateTaxes() {

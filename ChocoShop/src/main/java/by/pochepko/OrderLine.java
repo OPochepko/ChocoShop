@@ -1,4 +1,6 @@
-class OrderLine {
+package by.pochepko;
+
+public class OrderLine {
 
     private Chocolate chocolate;
     private int quantity;

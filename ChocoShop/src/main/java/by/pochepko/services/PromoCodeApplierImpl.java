@@ -1,5 +1,8 @@
+package by.pochepko.services;
 
-public class PromoCodeApplier {
+import by.pochepko.PromoCodes;
+
+public class PromoCodeApplierImpl implements PromoCodeApplier{
 
     public int applyPromoCode(PromoCodes code, int cost){
 
