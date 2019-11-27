@@ -1,31 +1,50 @@
 package by.pochepko;
 
+import com.google.common.base.Objects;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class Basket {
 
-    private ArrayList<OrderLine> order = new ArrayList<>();
+    private List<OrderLine> order = new ArrayList<>();
 
-    private PromoCodes promoCode;
+    private String promoCode;
 
 
-    public void put(OrderLine orderLine){
+    public void put(OrderLine orderLine) {
         order.add(orderLine);
     }
 
-    public void remove(int index){
-        order.remove(index);
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(order, promoCode);
     }
 
-    public void setPromoCode(PromoCodes promoCode) {
-        this.promoCode = promoCode;
+    public void remove(OrderLine orderLine) {
+        order.remove(orderLine);
     }
 
-    public ArrayList<OrderLine> getOrder() {
+    public List<OrderLine> getOrder() {
         return order;
     }
 
-    public PromoCodes getPromoCode() {
+    public String getPromoCode() {
         return promoCode;
     }
+
+    public void setPromoCode(String promoCode) {
+        this.promoCode = promoCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Basket basket = (Basket) o;
+        return Objects.equal(order, basket.order) &&
+                promoCode == basket.promoCode;
+    }
+
 }

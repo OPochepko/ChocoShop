@@ -1,15 +1,29 @@
 package by.pochepko.services;
 
+import by.pochepko.PromoCode;
 import by.pochepko.PromoCodes;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PromoCodeApplierImpl implements PromoCodeApplier{
+public class PromoCodeApplierImpl implements PromoCodeApplier {
 
-    public int applyPromoCode(PromoCodes code, int cost){
+    private PromoCodes promoCodes;
 
-        int costWithPromo = cost * (100 - code.getPercentDiscount())/100 - code.getFixDiscount(); ;
-
-        return costWithPromo;
+    public PromoCodeApplierImpl(PromoCodes promoCodes) {
+        this.promoCodes = promoCodes;
     }
+
+    public int applyPromoCode(String code, int cost) {
+
+        PromoCode promoCode = promoCodes.get(code);
+
+        if (promoCode == null) return cost;
+        else {
+
+            int costWithPromo = cost * (100 - promoCode.getPercentDiscount()) / 100 - promoCode.getFixDiscount();
+            return costWithPromo;
+
+        }
+
     }
+}

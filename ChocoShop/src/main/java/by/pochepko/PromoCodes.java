@@ -1,22 +1,25 @@
 package by.pochepko;
 
-public enum PromoCodes {
+import org.springframework.stereotype.Component;
 
-    DECIMATION(0, 10), SENATOR(0, 100);
+import java.util.HashMap;
+import java.util.Map;
 
-    public int getFixDiscount() {
-        return fixDiscount;
+@Component
+public class PromoCodes {
+
+    private Map<String, PromoCode> promoCodes = new HashMap<>();
+
+    public void add(PromoCode promoCode) {
+        promoCodes.put(promoCode.getName(), promoCode);
     }
 
-    public int getPercentDiscount() {
-        return percentDiscount;
+    public PromoCode get(String name) {
+        return promoCodes.get(name);
     }
 
-    private int fixDiscount;
-    private int percentDiscount;
-
-    PromoCodes(int fixDiscount, int percentDiscount) {
-        this.fixDiscount = fixDiscount;
-        this.percentDiscount = percentDiscount;
+    public void remove(PromoCode promoCode) {
+        promoCodes.remove(promoCode.getName());
     }
+
 }

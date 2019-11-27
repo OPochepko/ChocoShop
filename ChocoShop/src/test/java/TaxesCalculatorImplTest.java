@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
 import by.pochepko.services.TaxesCalculator;
 import by.pochepko.services.TaxesCalculatorImpl;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

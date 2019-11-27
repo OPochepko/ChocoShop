@@ -1,8 +1,9 @@
+import by.pochepko.PromoCode;
 import by.pochepko.PromoCodes;
+import by.pochepko.services.PromoCodeApplierImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import by.pochepko.services.PromoCodeApplierImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -10,15 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class PromoCodeApplierImplTest {
 
 
-    private PromoCodeApplierImpl promoCodeApplier = new PromoCodeApplierImpl();
+    private PromoCodeApplierImpl promoCodeApplier;
 
     @Test
     void applyPromoCode() {
-
-        PromoCodes promoCodes = PromoCodes.DECIMATION;
-
-        assertThat(promoCodeApplier.applyPromoCode(promoCodes,100)).isEqualTo(90);
-
+        PromoCodes promoCodes = new PromoCodes();
+        promoCodes.add(new PromoCode("Decimation", 0, 10));
+        promoCodeApplier = new PromoCodeApplierImpl(promoCodes);
+        assertThat(promoCodeApplier.applyPromoCode("Decimation", 100)).isEqualTo(90);
 
 
     }
