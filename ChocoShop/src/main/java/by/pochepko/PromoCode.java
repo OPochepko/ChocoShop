@@ -15,14 +15,6 @@ public class PromoCode {
         System.out.println("Created" + this.toString());
     }
 
-    @Override
-    public String toString() {
-        return "PromoCode{" +
-                "name='" + name + '\'' +
-                ", fixDiscount=" + fixDiscount +
-                ", percentDiscount=" + percentDiscount + "%" +
-                '}';
-    }
 
     public String getName() {
         return name;
@@ -34,6 +26,15 @@ public class PromoCode {
 
     public int getPercentDiscount() {
         return percentDiscount;
+    }
+
+    @Override
+    public String toString() {
+        return "PromoCode{" +
+                "name='" + name + '\'' +
+                ", fixDiscount=" + fixDiscount +
+                ", percentDiscount=" + percentDiscount + "%" +
+                '}';
     }
 
     @Override
