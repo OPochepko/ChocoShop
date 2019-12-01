@@ -6,18 +6,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TaxesCalculatorImplTest {
 
-    private TaxesCalculator taxesCalculator = new TaxesCalculatorImpl();
+    private TaxesCalculator taxesCalculator;
 
     @Test
-    void calculateTaxes() {
-        int costWithTaxes;
+    void calculateTaxes_PriceIsOneHundred_TotalCostShouldBeOneHundredAndTwelve() {
+        // given
+        taxesCalculator = new TaxesCalculatorImpl();
 
-        assertThat(taxesCalculator.calculateTaxes(109)).isEqualTo(122);
+        //when
+        int totalCost = taxesCalculator.calculateTaxes(100);
 
-        assertThat(taxesCalculator.calculateTaxes(100)).isEqualTo(112);
-
-        assertThat(taxesCalculator.calculateTaxes(50)).isEqualTo(62);
-
-
+        //then
+        assertThat(totalCost).isEqualTo(112);
     }
+
+    @Test
+    void calculateTaxes_PriceIsOneHundredAndNine_TotalCostShouldBeOneHundredAndTwentyTwo() {
+        //given
+        taxesCalculator = new TaxesCalculatorImpl();
+
+        //when
+        int totalCost = taxesCalculator.calculateTaxes(109);
+
+        //then
+        assertThat(totalCost).isEqualTo(122);
+    }
+
 }

@@ -17,6 +17,8 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorImplTest {
 
+    Basket basket = new Basket();
+
     @Mock
     private PromoCodeApplierImpl promoCodeApplier;
 
@@ -27,26 +29,22 @@ class OrderCalculatorImplTest {
     private OrderCalculatorImpl orderCalculator;
 
     @Test
-    void calculateOrderPrice() {
-        Basket basket = new Basket();
-
+    void calculateOrderPrice_twoOrderlinesInBasketPromocodeaAndTaxesApplied_totalPriceShouldBeTwoHundreds() {
+        // given
         basket.setPromoCode("Decimation");
-
         basket.put(new OrderLine(new Chocolate(25, "TWINX"), 5));
-
         basket.put(new OrderLine(new Chocolate(10, "BOUNCY"), 8));
-
         Mockito.when(promoCodeApplier.applyPromoCode(basket.getPromoCode(), 100))
                 .thenReturn(200);
-
         Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
 
+        //when
+        int totalPrice = orderCalculator.calculateOrderPrice(basket);
 
-        assertThat(orderCalculator.calculateOrderPrice(basket)).isEqualTo(200);
-
+        //then
+        assertThat(totalPrice).isEqualTo(200);
         verify(taxesCalculator, Mockito.times(2))
                 .calculateTaxes(Mockito.any(Integer.class));
-
         verify(promoCodeApplier, Mockito.times(1))
                 .applyPromoCode(basket.getPromoCode(), 100);
 

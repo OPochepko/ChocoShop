@@ -7,24 +7,6 @@ import java.util.List;
 
 public class Basket {
 
-    private List<OrderLine> order = new ArrayList<>();
-
-    private String promoCode;
-
-
-    public void put(OrderLine orderLine) {
-        order.add(orderLine);
-    }
-
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(order, promoCode);
-    }
-
-    public void remove(OrderLine orderLine) {
-        order.remove(orderLine);
-    }
 
     public List<OrderLine> getOrder() {
         return order;
@@ -38,6 +20,18 @@ public class Basket {
         this.promoCode = promoCode;
     }
 
+
+    private List<OrderLine> order = new ArrayList<>();
+
+    private String promoCode;
+
+
+    public void put(OrderLine orderLine) {
+        order.add(orderLine);
+    }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -45,6 +39,15 @@ public class Basket {
         Basket basket = (Basket) o;
         return Objects.equal(order, basket.order) &&
                 promoCode == basket.promoCode;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(order, promoCode);
+    }
+
+    public void remove(OrderLine orderLine) {
+        order.remove(orderLine);
     }
 
 }

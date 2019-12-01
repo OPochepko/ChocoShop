@@ -12,14 +12,22 @@ class PromoCodeApplierImplTest {
 
 
     private PromoCodeApplierImpl promoCodeApplier;
+    private PromoCodes promoCodes;
+    private int costAfterPromocodeApplied;
+
 
     @Test
-    void applyPromoCode() {
-        PromoCodes promoCodes = new PromoCodes();
+    void applyPromoCode_CostAfterPromocodeAppliedShouldBeNinety() {
+        // given
+        promoCodes = new PromoCodes();
         promoCodes.add(new PromoCode("Decimation", 0, 10));
         promoCodeApplier = new PromoCodeApplierImpl(promoCodes);
-        assertThat(promoCodeApplier.applyPromoCode("Decimation", 100)).isEqualTo(90);
 
+        // when
+        costAfterPromocodeApplied = promoCodeApplier.applyPromoCode("Decimation", 100);
+
+        //then
+        assertThat(costAfterPromocodeApplied).isEqualTo(90);
 
     }
 
