@@ -4,10 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.lang.invoke.MethodHandles;
+
 @Component
 public class TaxesCalculatorImpl implements TaxesCalculator {
 
-    private Logger logger = LoggerFactory.getLogger(PromoCodeApplierImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     public TaxesCalculatorImpl() {
         logger.info("TaxesCalculator created");
