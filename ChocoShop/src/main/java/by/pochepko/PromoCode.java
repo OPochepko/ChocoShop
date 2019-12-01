@@ -12,7 +12,6 @@ public class PromoCode {
         this.name = name;
         this.fixDiscount = fixDiscount;
         this.percentDiscount = percentDiscount;
-        System.out.println("Created" + this.toString());
     }
 
 

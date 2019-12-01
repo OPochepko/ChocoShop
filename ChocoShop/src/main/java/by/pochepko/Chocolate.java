@@ -34,4 +34,12 @@ public class Chocolate {
     public int hashCode() {
         return Objects.hashCode(price, name);
     }
+
+    @Override
+    public String toString() {
+        return "Chocolate{" +
+                "price=" + price +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

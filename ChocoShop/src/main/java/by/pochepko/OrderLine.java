@@ -39,4 +39,11 @@ public class OrderLine {
         return Objects.hashCode(chocolate, quantity);
     }
 
+    @Override
+    public String toString() {
+        return "OrderLine{" +
+                "chocolate=" + chocolate +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

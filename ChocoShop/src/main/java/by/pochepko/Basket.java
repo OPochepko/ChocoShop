@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Basket {
 
-
     public List<OrderLine> getOrder() {
         return order;
     }
@@ -20,17 +19,17 @@ public class Basket {
         this.promoCode = promoCode;
     }
 
-
     private List<OrderLine> order = new ArrayList<>();
 
     private String promoCode;
-
 
     public void put(OrderLine orderLine) {
         order.add(orderLine);
     }
 
-
+    public void remove(OrderLine orderLine) {
+        order.remove(orderLine);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -46,8 +45,11 @@ public class Basket {
         return Objects.hashCode(order, promoCode);
     }
 
-    public void remove(OrderLine orderLine) {
-        order.remove(orderLine);
+    @Override
+    public String toString() {
+        return "Basket{" +
+                "order=" + order +
+                ", promoCode='" + promoCode + '\'' +
+                '}';
     }
-
 }
