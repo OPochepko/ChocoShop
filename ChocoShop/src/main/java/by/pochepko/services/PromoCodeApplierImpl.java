@@ -17,7 +17,7 @@ public class PromoCodeApplierImpl implements PromoCodeApplier {
 
     public PromoCodeApplierImpl(PromoCodes promoCodes) {
         this.promoCodes = promoCodes;
-        logger.info("PromocodeApplier Created");
+        logger.info("PromocodeApplier created");
     }
 
     @Override
@@ -28,8 +28,7 @@ public class PromoCodeApplierImpl implements PromoCodeApplier {
         if (promoCode == null) {
             logger.info("promocode = NULL");
             return cost;
-        }
-        else {
+        } else {
             int costWithPromo = cost * (100 - promoCode.getPercentDiscount()) / 100 - promoCode.getFixDiscount();
             logger.info("promocode =" + promoCode);
             return costWithPromo;
