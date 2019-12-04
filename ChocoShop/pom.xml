@@ -15,7 +15,7 @@
         <assertj-version>3.14.0</assertj-version>
         <logback-version>1.2.3</logback-version>
         <guava-version>28.1-jre</guava-version>
-        <xml-bind-version>2.3.1</xml-bind-version>
+        <xml-jaxb-version>2.3.1</xml-jaxb-version>
     </properties>
 
 
@@ -90,14 +90,14 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>${xml-bind-version}</version>
+            <version>${xml-jaxb-version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.1</version>
+            <version>${xml-jaxb-version}</version>
         </dependency>
 
 
