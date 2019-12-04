@@ -11,7 +11,7 @@ public class PromoCodes {
     private Map<String, PromoCode> promoCodes = new HashMap<>();
 
     public void add(PromoCode promoCode) {
-        promoCodes.put(promoCode.getName(), promoCode);
+        promoCodes.put(promoCode.getCode(), promoCode);
     }
 
     public PromoCode get(String name) {
@@ -19,7 +19,7 @@ public class PromoCodes {
     }
 
     public void remove(PromoCode promoCode) {
-        promoCodes.remove(promoCode.getName());
+        promoCodes.remove(promoCode.getCode());
     }
 
 }

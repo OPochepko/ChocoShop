@@ -2,21 +2,31 @@ package by.pochepko;
 
 import com.google.common.base.Objects;
 
-public class PromoCode {
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-    private String name;
+@XmlRootElement(name = "promocode")
+public class PromoCode {
+    @XmlAttribute(name = "code")
+    private String code;
+    @XmlElement(name = "fixdiscount")
     private int fixDiscount;
+    @XmlElement(name = "percentdiscount")
     private int percentDiscount;
 
-    public PromoCode(String name, int fixDiscount, int percentDiscount) {
-        this.name = name;
+    public PromoCode() {
+    }
+
+    public PromoCode(String code, int fixDiscount, int percentDiscount) {
+        this.code = code;
         this.fixDiscount = fixDiscount;
         this.percentDiscount = percentDiscount;
     }
 
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
     public int getFixDiscount() {
@@ -30,7 +40,7 @@ public class PromoCode {
     @Override
     public String toString() {
         return "PromoCode{" +
-                "name='" + name + '\'' +
+                "name='" + code + '\'' +
                 ", fixDiscount=" + fixDiscount +
                 ", percentDiscount=" + percentDiscount + "%" +
                 '}';
