@@ -7,15 +7,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class TaxesCalculatorImplTest {
 
-    private TaxesCalculator taxesCalculator;
+    private TaxesCalculator sut = new TaxesCalculatorImpl();
 
     @Test
     void calculateTaxes_PriceIsOneHundred_TotalCostShouldBeOneHundredAndTwelve() {
         // given
-        taxesCalculator = new TaxesCalculatorImpl();
+        int price = 100;
 
         //when
-        int totalCost = taxesCalculator.calculateTaxes(100);
+        int totalCost = sut.calculateTaxes(price);
 
         //then
         assertThat(totalCost).isEqualTo(112);
@@ -24,11 +24,10 @@ class TaxesCalculatorImplTest {
     @Test
     void calculateTaxes_PriceIsOneHundredAndNine_TotalCostShouldBeOneHundredAndTwentyTwo() {
         //given
-        taxesCalculator = new TaxesCalculatorImpl();
         int price = 109;
 
         //when
-        int totalCost = taxesCalculator.calculateTaxes(price);
+        int totalCost = sut.calculateTaxes(price);
 
         //then
         assertThat(totalCost).isEqualTo(122);
@@ -37,12 +36,11 @@ class TaxesCalculatorImplTest {
     @Test
     void calculateTaxes_PriceIsNegative_ShouldThrowException() {
         //given
-        taxesCalculator = new TaxesCalculatorImpl();
         int price = -100;
 
-        //then
+        //when - then throws an exception
         assertThatThrownBy(() -> {
-            taxesCalculator.calculateTaxes(price);
+            sut.calculateTaxes(price);
 
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Price must be not negative: -100");

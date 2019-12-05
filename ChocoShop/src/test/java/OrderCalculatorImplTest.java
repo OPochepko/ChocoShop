@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorImplTest {
 
-    Basket basket = new Basket();
+    private Basket basket = new Basket();
 
     @Mock
     private XMLPromocodeApplier promoCodeApplier;
@@ -27,7 +27,7 @@ class OrderCalculatorImplTest {
     private TaxesCalculator taxesCalculator;
 
     @InjectMocks
-    private OrderCalculatorImpl orderCalculator;
+    private OrderCalculatorImpl sut;
 
     @Test
     void calculateOrderPrice_twoOrderlinesInBasketPromocodeaAndTaxesApplied_totalPriceShouldBeTwoHundreds() {
@@ -40,7 +40,7 @@ class OrderCalculatorImplTest {
         Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
 
         //when
-        int totalPrice = orderCalculator.calculateOrderPrice(basket);
+        int totalPrice = sut.calculateOrderPrice(basket);
 
         //then
         assertThat(totalPrice).isEqualTo(200);
@@ -56,9 +56,9 @@ class OrderCalculatorImplTest {
         //given
         basket = null;
 
-        //whenthen?
+        //when - then throws an exception
         assertThatThrownBy(() -> {
-            orderCalculator.calculateOrderPrice(basket);
+            sut.calculateOrderPrice(basket);
 
         }).isInstanceOf(NullPointerException.class)
                 .hasMessage("The basket must not be null");

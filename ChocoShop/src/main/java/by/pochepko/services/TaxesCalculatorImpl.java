@@ -19,7 +19,7 @@ public class TaxesCalculatorImpl implements TaxesCalculator {
 
     @Override
     public int calculateTaxes(int price) {
-        Validate.isTrue(price >= 0, "Price must be not negative: %d", price);
+        Validate.inclusiveBetween(0, Integer.MAX_VALUE, price, "Price must be not negative: %d", price);
         int costAfterTaxes = (price > 100) ? (int) (price * 1.12) : price + 12;
         logger.info("price = " + price + " costAfterTaxes = " + costAfterTaxes);
         return costAfterTaxes;

@@ -9,20 +9,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @ExtendWith(MockitoExtension.class)
 class XMLPromocodeApplierTest {
 
-
-    private XMLPromocodeApplier promoCodeApplier;
-    private int costAfterPromocodeApplied;
-
+    private XMLPromocodeApplier sut = new XMLPromocodeApplier() {
+        {
+            sut.readPromocodes("src/test/resources/testPromocodes.xml");
+        }
+    };
 
     @Test
     void applyPromoCode_CostAfterPromocodeAppliedShouldBeNinety() {
         // given
-        promoCodeApplier = new XMLPromocodeApplier();
-        promoCodeApplier.readPromocodes("src/test/resources/testPromocodes.xml");
         int cost = 100;
 
         // when
-        costAfterPromocodeApplied = promoCodeApplier.applyPromoCode("DECIMATION", cost);
+        int costAfterPromocodeApplied = sut.applyPromoCode("DECIMATION", cost);
 
         //then
         assertThat(costAfterPromocodeApplied).isEqualTo(90);
@@ -32,12 +31,10 @@ class XMLPromocodeApplierTest {
     @Test
     void applyPromoCode_GivenInvalidCode_costAfterPromocodeAppliedShouldStay100() {
         // given
-        promoCodeApplier = new XMLPromocodeApplier();
-        promoCodeApplier.readPromocodes("src/test/resources/testPromocodes.xml");
         int cost = 100;
 
         // when
-        costAfterPromocodeApplied = promoCodeApplier.applyPromoCode("DECMATION", cost);
+        int costAfterPromocodeApplied = sut.applyPromoCode("DECMATION", cost);
 
         //then
         assertThat(costAfterPromocodeApplied).isEqualTo(100);
@@ -48,14 +45,11 @@ class XMLPromocodeApplierTest {
     @Test
     void applyPromoCode_GivenNegativeCost_ShouldThrowException() {
         // given
-        promoCodeApplier = new XMLPromocodeApplier();
-        promoCodeApplier.readPromocodes("src/test/resources/testPromocodes.xml");
         int cost = -100;
 
-        //
+        //when - then throws an exception
         assertThatThrownBy(() -> {
-            promoCodeApplier.applyPromoCode("DDECIMATION", cost);
-
+            sut.applyPromoCode("DECIMATION", cost);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Cost must be not negative: -100");
     }

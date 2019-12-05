@@ -25,9 +25,9 @@ public class OrderCalculatorImpl implements OrderCalculator {
 
     @Override
     public int calculateOrderPrice(Basket basket) {
-        int finalCost = 0;
-
         Validate.notNull(basket, "The basket must not be %s", null);
+
+        int finalCost = 0;
 
         for (OrderLine orderLine : basket.getOrder()) {
             finalCost += taxesCalculator.calculateTaxes(orderLine.getTotalPrice());

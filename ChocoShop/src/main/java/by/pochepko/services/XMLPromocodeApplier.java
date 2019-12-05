@@ -27,8 +27,7 @@ public class XMLPromocodeApplier implements PromoCodeApplier {
     @Override
     public int applyPromoCode(String code, int cost) {
 
-        Validate.isTrue(cost >= 0, "Cost must be not negative: %d", cost);
-
+        Validate.inclusiveBetween(0, Integer.MAX_VALUE, cost, "Cost must be not negative: %d", cost);
 
         PromoCode promoCode = promocodes.get(code);
 
