@@ -12,6 +12,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -48,5 +49,18 @@ class OrderCalculatorImplTest {
         verify(promoCodeApplier, Mockito.times(1))
                 .applyPromoCode(basket.getPromoCode(), 100);
 
+    }
+
+    @Test
+    void calculateOrderPrice_GivenNULLBasket_ShouldThrowNullPointerException() {
+        //given
+        basket = null;
+
+        //whenthen?
+        assertThatThrownBy(() -> {
+            orderCalculator.calculateOrderPrice(basket);
+
+        }).isInstanceOf(NullPointerException.class)
+                .hasMessage("The basket must not be null");
     }
 }

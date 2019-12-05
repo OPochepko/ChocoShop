@@ -1,6 +1,7 @@
 package by.pochepko.services;
 
 import by.pochepko.PromoCode;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +26,9 @@ public class XMLPromocodeApplier implements PromoCodeApplier {
 
     @Override
     public int applyPromoCode(String code, int cost) {
+
+        Validate.isTrue(cost >= 0, "Cost must be not negative: %d", cost);
+
 
         PromoCode promoCode = promocodes.get(code);
 

@@ -3,6 +3,7 @@ import by.pochepko.services.TaxesCalculatorImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class TaxesCalculatorImplTest {
 
@@ -24,12 +25,29 @@ class TaxesCalculatorImplTest {
     void calculateTaxes_PriceIsOneHundredAndNine_TotalCostShouldBeOneHundredAndTwentyTwo() {
         //given
         taxesCalculator = new TaxesCalculatorImpl();
+        int price = 109;
 
         //when
-        int totalCost = taxesCalculator.calculateTaxes(109);
+        int totalCost = taxesCalculator.calculateTaxes(price);
 
         //then
         assertThat(totalCost).isEqualTo(122);
+    }
+
+    @Test
+    void calculateTaxes_PriceIsNegative_ShouldThrowException() {
+        //given
+        taxesCalculator = new TaxesCalculatorImpl();
+        int price = -100;
+
+        //then
+        assertThatThrownBy(() -> {
+            taxesCalculator.calculateTaxes(price);
+
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Price must be not negative: -100");
+
+
     }
 
 }

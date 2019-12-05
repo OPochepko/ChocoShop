@@ -2,6 +2,7 @@ package by.pochepko.services;
 
 import by.pochepko.Basket;
 import by.pochepko.OrderLine;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,8 @@ public class OrderCalculatorImpl implements OrderCalculator {
     @Override
     public int calculateOrderPrice(Basket basket) {
         int finalCost = 0;
+
+        Validate.notNull(basket, "The basket must not be %s", null);
 
         for (OrderLine orderLine : basket.getOrder()) {
             finalCost += taxesCalculator.calculateTaxes(orderLine.getTotalPrice());
