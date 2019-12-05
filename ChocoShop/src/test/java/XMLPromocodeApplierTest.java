@@ -9,14 +9,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @ExtendWith(MockitoExtension.class)
 class XMLPromocodeApplierTest {
 
-    private XMLPromocodeApplier sut = new XMLPromocodeApplier();
+    private XMLPromocodeApplier sut = new XMLPromocodeApplier() {
+        {
+            readPromocodes();
+        }
+    };
 
     @Test
     void applyPromoCode_CostAfterPromocodeAppliedShouldBeNinety() {
         // given
         int cost = 100;
-        sut.readPromocodes("src/test/resources/testPromocodes.xml");
-
 
         // when
         int costAfterPromocodeApplied = sut.applyPromoCode("DECIMATION", cost);
@@ -30,8 +32,6 @@ class XMLPromocodeApplierTest {
     void applyPromoCode_GivenInvalidCode_costAfterPromocodeAppliedShouldStay100() {
         // given
         int cost = 100;
-        sut.readPromocodes("src/test/resources/testPromocodes.xml");
-
 
         // when
         int costAfterPromocodeApplied = sut.applyPromoCode("DECMATION", cost);
@@ -39,15 +39,12 @@ class XMLPromocodeApplierTest {
         //then
         assertThat(costAfterPromocodeApplied).isEqualTo(100);
 
-
     }
 
     @Test
     void applyPromoCode_GivenNegativeCost_ShouldThrowException() {
         // given
         int cost = -100;
-        sut.readPromocodes("src/test/resources/testPromocodes.xml");
-
 
         //when - then throws an exception
         assertThatThrownBy(() -> {
