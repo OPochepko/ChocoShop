@@ -2,8 +2,8 @@ import by.pochepko.Basket;
 import by.pochepko.Chocolate;
 import by.pochepko.OrderLine;
 import by.pochepko.services.OrderCalculatorImpl;
-import by.pochepko.services.PromoCodeApplierImpl;
 import by.pochepko.services.TaxesCalculator;
+import by.pochepko.services.XMLPromocodeApplier;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,7 +20,7 @@ class OrderCalculatorImplTest {
     Basket basket = new Basket();
 
     @Mock
-    private PromoCodeApplierImpl promoCodeApplier;
+    private XMLPromocodeApplier promoCodeApplier;
 
     @Mock
     private TaxesCalculator taxesCalculator;
