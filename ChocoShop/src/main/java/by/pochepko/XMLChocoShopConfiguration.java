@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @ComponentScan(basePackages = "by.pochepko")
 @Configuration
-public class ChocoShopConfiguration {
+public class XMLChocoShopConfiguration {
 
     @Bean
     public PromoCodeApplier promoCodeApplier() {

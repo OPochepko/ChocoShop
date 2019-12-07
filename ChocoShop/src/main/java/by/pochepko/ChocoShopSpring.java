@@ -6,6 +6,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class ChocoShopSpring {
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(ChocoShopConfiguration.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(DBChocoShopConfiguration.class);
     }
 }
