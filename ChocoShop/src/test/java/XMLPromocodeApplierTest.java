@@ -1,4 +1,5 @@
 import by.pochepko.services.XMLPromocodeApplier;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -9,11 +10,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @ExtendWith(MockitoExtension.class)
 class XMLPromocodeApplierTest {
 
-    private XMLPromocodeApplier sut = new XMLPromocodeApplier() {
-        {
-            readPromocodes();
-        }
-    };
+    private static XMLPromocodeApplier sut = new XMLPromocodeApplier();
+
+    @BeforeAll
+    static void setUp() {
+        sut.readPromocodes();
+    }
+
+
 
     @Test
     void applyPromoCode_CostAfterPromocodeAppliedShouldBeNinety() {

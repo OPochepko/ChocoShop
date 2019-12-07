@@ -18,8 +18,6 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorImplTest {
 
-    private Basket basket = new Basket();
-
     @Mock
     private XMLPromocodeApplier promoCodeApplier;
 
@@ -32,6 +30,7 @@ class OrderCalculatorImplTest {
     @Test
     void calculateOrderPrice_twoOrderlinesInBasketPromocodeaAndTaxesApplied_totalPriceShouldBeTwoHundreds() {
         // given
+        Basket basket = new Basket();
         basket.setPromoCode("Decimation");
         basket.put(new OrderLine(new Chocolate(25, "TWINX"), 5));
         basket.put(new OrderLine(new Chocolate(10, "BOUNCY"), 8));
@@ -54,7 +53,7 @@ class OrderCalculatorImplTest {
     @Test
     void calculateOrderPrice_GivenNULLBasket_ShouldThrowNullPointerException() {
         //given
-        basket = null;
+        Basket basket = null;
 
         //when - then throws an exception
         assertThatThrownBy(() -> {
