@@ -1,4 +1,4 @@
-package by.pochepko;
+package by.pochepko.springcfg;
 
 import by.pochepko.services.PromoCodeApplier;
 import by.pochepko.services.XMLPromocodeApplier;

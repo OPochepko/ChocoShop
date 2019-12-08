@@ -1,6 +1,6 @@
 import by.pochepko.Basket;
-import by.pochepko.Chocolate;
 import by.pochepko.OrderLine;
+import by.pochepko.model.Chocolate;
 import by.pochepko.services.OrderCalculatorImpl;
 import by.pochepko.services.TaxesCalculator;
 import by.pochepko.services.XMLPromocodeApplier;

@@ -5,11 +5,11 @@ import by.pochepko.OrderLine;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.lang.invoke.MethodHandles;
 
-@Component
+@Service
 public class OrderCalculatorImpl implements OrderCalculator {
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

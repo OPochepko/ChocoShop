@@ -1,4 +1,4 @@
-package by.pochepko;
+package by.pochepko.model;
 
 import com.google.common.base.Objects;
 

@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <springframework-version>5.2.1.RELEASE</springframework-version>
+        <springframework-version>5.2.2.RELEASE</springframework-version>
         <junit-version>5.6.0-M1</junit-version>
         <mockito-version>3.1.0</mockito-version>
         <assertj-version>3.14.0</assertj-version>
@@ -19,6 +19,7 @@
         <apache-commons-version>3.9</apache-commons-version>
         <hibernate-version>5.4.9.Final</hibernate-version>
         <postgresql-version>42.2.8</postgresql-version>
+        <commons-dbcp2-version>2.7.0</commons-dbcp2-version>
     </properties>
 
 
@@ -67,6 +68,14 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springframework-version}</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
         <dependency>
@@ -122,6 +131,13 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql-version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2-version}</version>
         </dependency>
 
 

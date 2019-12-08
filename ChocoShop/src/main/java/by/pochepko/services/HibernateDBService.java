@@ -5,28 +5,21 @@ import by.pochepko.PromoCode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-@Component
+@Service
 public class HibernateDBService implements DBService {
-    private final SessionFactory sf;
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    @Autowired
+    private SessionFactory sf;
 
     public HibernateDBService() {
-        Configuration configuration = new Configuration();
-//        configuration.addAnnotatedClass(PromoCode.class);
-//        configuration.setProperty("connection.url", "jdbc:postgresql://localhost:5432/ChocoShopDB");
-//        configuration.setProperty("connection.driver_class", "org.postgresql.Driver");
-//        configuration.setProperty("connection.username", "postgres");
-//        configuration.setProperty("connection.password", "3211385");
-//        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-//        configuration.setProperty("hbm2ddl.auto", "auto");
-//        configuration.setProperty("show_sql", "true");
-//        configuration.setProperty("format_sql", "true");
-//        configuration.setProperty("hibernate.connection.useSSL", "false");
-        sf = configuration.configure().buildSessionFactory();
     }
 
     @Override

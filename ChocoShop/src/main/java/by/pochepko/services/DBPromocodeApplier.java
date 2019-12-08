@@ -4,18 +4,22 @@ import by.pochepko.PromoCode;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Service
 public class DBPromocodeApplier implements PromoCodeApplier {
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    HibernateDBService hibernateDBService;
+
+    @Autowired
+    private HibernateDBService hibernateDBService;
+
     private Map<String, PromoCode> promocodes = new HashMap<>();
 
     @Override
