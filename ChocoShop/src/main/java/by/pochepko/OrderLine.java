@@ -8,7 +8,6 @@ public class OrderLine {
     private Chocolate chocolate;
     private int quantity;
 
-
     public OrderLine(Chocolate chocolate, int quantity) {
         this.chocolate = chocolate;
         this.quantity = quantity;
@@ -21,6 +20,11 @@ public class OrderLine {
     public int getQuantity() {
         return quantity;
     }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 
     public int getTotalPrice() {
         return quantity * chocolate.getPrice();

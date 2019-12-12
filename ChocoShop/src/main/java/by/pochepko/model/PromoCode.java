@@ -1,4 +1,4 @@
-package by.pochepko;
+package by.pochepko.model;
 
 import com.google.common.base.Objects;
 
@@ -31,7 +31,6 @@ public class PromoCode {
         this.percentDiscount = percentDiscount;
     }
 
-    @Basic
     public String getCode() {
         return code;
     }
@@ -40,7 +39,6 @@ public class PromoCode {
         this.code = code;
     }
 
-    @Basic
     public int getFixDiscount() {
         return fixDiscount;
     }
@@ -49,7 +47,6 @@ public class PromoCode {
         this.fixDiscount = fixDiscount;
     }
 
-    @Basic
     public int getPercentDiscount() {
         return percentDiscount;
     }

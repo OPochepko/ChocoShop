@@ -1,23 +1,9 @@
 package by.pochepko.DAO;
 
-import by.pochepko.PromoCode;
-import org.hibernate.Session;
+import by.pochepko.model.PromoCode;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class PromoCodeDAO {
-    private Session session;
-
-    public PromoCodeDAO(Session session) {
-        this.session = session;
-    }
-
-    public List<PromoCode> readPromocodes() {
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<PromoCode> criteria = builder.createQuery(PromoCode.class);
-        criteria.from(PromoCode.class);
-        return session.createQuery(criteria).list();
-    }
+public interface PromoCodeDAO {
+    List<PromoCode> readPromocodes();
 }
