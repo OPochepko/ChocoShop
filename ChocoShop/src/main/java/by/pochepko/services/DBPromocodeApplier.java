@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -40,9 +39,10 @@ public class DBPromocodeApplier implements PromoCodeApplier {
 
     @Override
     public void readPromocodes() {
-        List<PromoCode> promoCodeList = hibernateDBService.readPromocodes();
+        Iterable<PromoCode> promoCodeList = hibernateDBService.readPromocodes();
         for (PromoCode promoCode : promoCodeList) {
             promocodes.put(promoCode.getCode(), promoCode);
         }
     }
+
 }

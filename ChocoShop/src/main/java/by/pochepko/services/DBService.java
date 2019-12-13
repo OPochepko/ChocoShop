@@ -1,11 +1,18 @@
 package by.pochepko.services;
 
+import by.pochepko.model.Chocolate;
 import by.pochepko.model.PromoCode;
+import by.pochepko.model.Stock;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 public interface DBService {
     @Transactional
-    List<PromoCode> readPromocodes();
+    Iterable<PromoCode> readPromocodes();
+
+    @Transactional
+    Iterable<Stock> loadStock();
+
+    @Transactional
+    Iterable<Chocolate> readChocolates();
+
 }

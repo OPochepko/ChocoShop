@@ -1,5 +1,8 @@
 package by.pochepko.main;
 
+import by.pochepko.OrderLine;
+import by.pochepko.model.Chocolate;
+import by.pochepko.services.DBChocoStockAligner;
 import by.pochepko.services.SpringDataDBService;
 import by.pochepko.springcfg.DBChocoShopConfiguration;
 import org.springframework.context.ApplicationContext;
@@ -12,6 +15,10 @@ public class ChocoShopSpring {
         SpringDataDBService dbService = context.getBean(SpringDataDBService.class);
         dbService.readPromocodes();
         dbService.readChocolates();
+        DBChocoStockAligner dbChocoStockAligner = context.getBean(DBChocoStockAligner.class);
+        dbChocoStockAligner.loadStock();
+        System.out.println(dbChocoStockAligner.alignOrderLineWithStock(new OrderLine(new Chocolate(50, "Twinx"), 100)));
+
 
     }
 }
