@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PromocodeCrudRepository extends CrudRepository<PromoCode, Integer> {
+    PromoCode findByCode(String code);
 }

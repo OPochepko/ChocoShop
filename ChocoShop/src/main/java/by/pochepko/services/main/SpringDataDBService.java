@@ -1,4 +1,4 @@
-package by.pochepko.services;
+package by.pochepko.services.main;
 
 import by.pochepko.DAO.ChocolateCrudRepository;
 import by.pochepko.DAO.PromocodeCrudRepository;
@@ -6,6 +6,7 @@ import by.pochepko.DAO.StockCrudRepository;
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.PromoCode;
 import by.pochepko.model.Stock;
+import by.pochepko.services.DBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,11 @@ public class SpringDataDBService implements DBService {
     @Transactional
     public Iterable<Chocolate> readChocolates() {
         return chocolateCrudRepository.findAll();
+    }
+
+    @Override
+    public PromoCode getPromocodeByCode(String code) {
+        return promocodeCrudRepository.findByCode(code);
     }
 
 

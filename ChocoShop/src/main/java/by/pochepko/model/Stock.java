@@ -30,15 +30,15 @@ public class Stock {
         return id;
     }
 
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
-    public void setChocolate(Chocolate chocolate) {
+    private void setChocolate(Chocolate chocolate) {
         this.chocolate = chocolate;
     }
 
-    public void setQuantity(int quantity) {
+    private void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

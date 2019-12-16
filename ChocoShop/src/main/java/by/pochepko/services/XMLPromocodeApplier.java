@@ -43,7 +43,6 @@ public class XMLPromocodeApplier implements PromoCodeApplier {
         }
     }
 
-    @Override
     public void readPromocodes() {
         readPromocodes("src/main/resources/promocodes.xml");
     }

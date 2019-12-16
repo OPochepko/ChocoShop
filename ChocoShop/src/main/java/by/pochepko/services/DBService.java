@@ -15,4 +15,6 @@ public interface DBService {
     @Transactional
     Iterable<Chocolate> readChocolates();
 
+    @Transactional
+    PromoCode getPromocodeByCode(String code);
 }

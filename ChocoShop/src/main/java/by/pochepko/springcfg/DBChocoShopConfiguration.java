@@ -15,7 +15,7 @@ import org.springframework.transaction.TransactionManager;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-@ComponentScan(basePackages = "by.pochepko")
+@ComponentScan(basePackages = "by.pochepko.services.main")
 @Configuration
 @EnableJpaRepositories("by.pochepko.DAO")
 
