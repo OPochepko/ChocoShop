@@ -22,8 +22,16 @@ public class Stock {
         return chocolate;
     }
 
+    private void setChocolate(Chocolate chocolate) {
+        this.chocolate = chocolate;
+    }
+
     public int getQuantity() {
         return quantity;
+    }
+
+    private void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -32,14 +40,6 @@ public class Stock {
 
     private void setId(int id) {
         this.id = id;
-    }
-
-    private void setChocolate(Chocolate chocolate) {
-        this.chocolate = chocolate;
-    }
-
-    private void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     @Override

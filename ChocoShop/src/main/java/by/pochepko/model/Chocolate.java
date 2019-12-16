@@ -68,7 +68,8 @@ public class Chocolate {
     @Override
     public String toString() {
         return "Chocolate{" +
-                "price=" + price +
+                "id=" + id +
+                ", price=" + price +
                 ", name='" + name + '\'' +
                 '}';
     }

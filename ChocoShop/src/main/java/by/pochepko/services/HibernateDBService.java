@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HibernateDBService implements DBService {
@@ -44,5 +45,26 @@ public class HibernateDBService implements DBService {
     public Iterable<Chocolate> readChocolates() {
         return null;
     }
+
+    @Override
+    public PromoCode getPromocodeByCode(String code) {
+        return null;
+    }
+
+    @Override
+    public int getStockQuantityByChocolate(Chocolate chocolate) {
+        return 0;
+    }
+
+    @Override
+    public Chocolate saveChocolate(Chocolate chocolate) {
+        return null;
+    }
+
+    @Override
+    public Optional<Chocolate> findChocolateById(int id) {
+        return Optional.empty();
+    }
+
 
 }
