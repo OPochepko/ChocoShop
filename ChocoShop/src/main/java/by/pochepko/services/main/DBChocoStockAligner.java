@@ -2,6 +2,7 @@ package by.pochepko.services.main;
 
 import by.pochepko.OrderLine;
 import by.pochepko.services.ChocoStockAligner;
+import by.pochepko.services.DBService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import java.lang.invoke.MethodHandles;
 public class DBChocoStockAligner implements ChocoStockAligner {
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
     @Autowired
-    private SpringDataDBService dbService;
+    private DBService dbService;
+
 
     @Override
     public OrderLine alignOrderLineWithStock(OrderLine orderLine) {
