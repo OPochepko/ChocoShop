@@ -1,9 +1,9 @@
 package by.pochepko.DAO;
 
-import by.pochepko.model.PromoCode;
+import by.pochepko.model.Promocode;
 
 import java.util.List;
 
 public interface PromoCodeDAO {
-    List<PromoCode> readPromocodes();
+    List<Promocode> readPromocodes();
 }

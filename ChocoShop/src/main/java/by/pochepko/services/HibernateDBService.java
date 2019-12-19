@@ -3,7 +3,7 @@ package by.pochepko.services;
 import by.pochepko.DAO.PromoCodeDAO;
 import by.pochepko.DAO.PromoCodeDAOImpl;
 import by.pochepko.model.Chocolate;
-import by.pochepko.model.PromoCode;
+import by.pochepko.model.Promocode;
 import by.pochepko.model.Stock;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,11 +27,11 @@ public class HibernateDBService implements DBService {
 
     @Transactional
     @Override
-    public Iterable<PromoCode> readPromocodes() {
+    public Iterable<Promocode> readPromocodes() {
         Session session = sf.openSession();
         Transaction transaction = session.beginTransaction();
         PromoCodeDAO dao = new PromoCodeDAOImpl(session);
-        List<PromoCode> promoCodes = dao.readPromocodes();
+        List<Promocode> promoCodes = dao.readPromocodes();
         transaction.commit();
         return promoCodes;
     }
@@ -47,7 +47,7 @@ public class HibernateDBService implements DBService {
     }
 
     @Override
-    public PromoCode getPromocodeByCode(String code) {
+    public Promocode getPromocodeByCode(String code) {
         return null;
     }
 

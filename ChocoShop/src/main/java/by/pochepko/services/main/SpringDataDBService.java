@@ -4,7 +4,7 @@ import by.pochepko.DAO.ChocolateCrudRepository;
 import by.pochepko.DAO.PromocodeCrudRepository;
 import by.pochepko.DAO.StockCrudRepository;
 import by.pochepko.model.Chocolate;
-import by.pochepko.model.PromoCode;
+import by.pochepko.model.Promocode;
 import by.pochepko.model.Stock;
 import by.pochepko.services.DBService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class SpringDataDBService implements DBService {
 
 
     @Transactional
-    public Iterable<PromoCode> readPromocodes() {
+    public Iterable<Promocode> readPromocodes() {
         return promocodeCrudRepository.findAll();
     }
 
@@ -40,7 +40,7 @@ public class SpringDataDBService implements DBService {
     }
 
     @Override
-    public PromoCode getPromocodeByCode(String code) {
+    public Promocode getPromocodeByCode(String code) {
         return promocodeCrudRepository.findByCode(code);
     }
 

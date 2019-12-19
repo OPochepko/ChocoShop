@@ -1,6 +1,6 @@
 package by.pochepko.DAO;
 
-import by.pochepko.model.PromoCode;
+import by.pochepko.model.Promocode;
 import org.hibernate.Session;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,10 +15,10 @@ public class PromoCodeDAOImpl implements PromoCodeDAO {
     }
 
     @Override
-    public List<PromoCode> readPromocodes() {
+    public List<Promocode> readPromocodes() {
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<PromoCode> criteria = builder.createQuery(PromoCode.class);
-        criteria.from(PromoCode.class);
+        CriteriaQuery<Promocode> criteria = builder.createQuery(Promocode.class);
+        criteria.from(Promocode.class);
         return session.createQuery(criteria).list();
     }
 }

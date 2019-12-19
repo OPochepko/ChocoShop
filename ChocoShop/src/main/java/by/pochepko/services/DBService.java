@@ -1,7 +1,7 @@
 package by.pochepko.services;
 
 import by.pochepko.model.Chocolate;
-import by.pochepko.model.PromoCode;
+import by.pochepko.model.Promocode;
 import by.pochepko.model.Stock;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface DBService {
     @Transactional
-    Iterable<PromoCode> readPromocodes();
+    Iterable<Promocode> readPromocodes();
 
     @Transactional
     Iterable<Stock> loadStock();
@@ -18,7 +18,7 @@ public interface DBService {
     Iterable<Chocolate> readChocolates();
 
     @Transactional
-    PromoCode getPromocodeByCode(String code);
+    Promocode getPromocodeByCode(String code);
 
     @Transactional
     int getStockQuantityByChocolate(Chocolate chocolate);

@@ -1,9 +1,9 @@
 import by.pochepko.Basket;
 import by.pochepko.OrderLine;
 import by.pochepko.model.Chocolate;
-import by.pochepko.services.OrderCalculatorImpl;
+import by.pochepko.services.PromocodeApplier;
 import by.pochepko.services.TaxesCalculator;
-import by.pochepko.services.XMLPromocodeApplier;
+import by.pochepko.services.main.OrderCalculatorImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 class OrderCalculatorImplTest {
 
     @Mock
-    private XMLPromocodeApplier promoCodeApplier;
+    private PromocodeApplier promoCodeApplier;
 
     @Mock
     private TaxesCalculator taxesCalculator;
@@ -34,7 +34,7 @@ class OrderCalculatorImplTest {
         basket.setPromoCode("Decimation");
         basket.put(new OrderLine(new Chocolate(25, "TWINX"), 5));
         basket.put(new OrderLine(new Chocolate(10, "BOUNCY"), 8));
-        Mockito.when(promoCodeApplier.applyPromoCode(basket.getPromoCode(), 100))
+        Mockito.when(promoCodeApplier.applyPromoCode(100))
                 .thenReturn(200);
         Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
 
@@ -46,7 +46,7 @@ class OrderCalculatorImplTest {
         verify(taxesCalculator, Mockito.times(2))
                 .calculateTaxes(Mockito.any(Integer.class));
         verify(promoCodeApplier, Mockito.times(1))
-                .applyPromoCode(basket.getPromoCode(), 100);
+                .applyPromoCode(100);
 
     }
 
