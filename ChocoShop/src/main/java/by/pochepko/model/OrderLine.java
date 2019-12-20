@@ -1,6 +1,5 @@
-package by.pochepko;
+package by.pochepko.model;
 
-import by.pochepko.model.Chocolate;
 import com.google.common.base.Objects;
 
 public class OrderLine {

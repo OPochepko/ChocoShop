@@ -1,7 +1,7 @@
 package by.pochepko.services.main;
 
-import by.pochepko.Basket;
-import by.pochepko.OrderLine;
+import by.pochepko.model.Basket;
+import by.pochepko.model.OrderLine;
 import by.pochepko.services.OrderCalculator;
 import by.pochepko.services.PromocodeApplier;
 import by.pochepko.services.PromocodeApplierFactory;

@@ -4,7 +4,7 @@ create table promocodes
     code            varchar(30) not null,
     fixdiscount     int,
     percentdiscount int,
-    _type           varchar     not null
+    pc_type         varchar     not null
 );
 
 create unique index promocodes_code_uindex

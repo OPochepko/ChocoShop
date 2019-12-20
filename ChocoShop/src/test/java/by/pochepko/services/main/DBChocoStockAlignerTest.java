@@ -1,7 +1,7 @@
 package by.pochepko.services.main;
 
-import by.pochepko.OrderLine;
 import by.pochepko.model.Chocolate;
+import by.pochepko.model.OrderLine;
 import by.pochepko.services.DBService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

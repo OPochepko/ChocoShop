@@ -1,6 +1,6 @@
 package by.pochepko.services;
 
-import by.pochepko.Basket;
+import by.pochepko.model.Basket;
 
 public interface OrderCalculator {
 

@@ -1,6 +1,6 @@
 package by.pochepko.services.main;
 
-import by.pochepko.OrderLine;
+import by.pochepko.model.OrderLine;
 import by.pochepko.services.ChocoStockAligner;
 import by.pochepko.services.DBService;
 import org.slf4j.Logger;
