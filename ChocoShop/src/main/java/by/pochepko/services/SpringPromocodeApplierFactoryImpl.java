@@ -1,9 +1,6 @@
-package by.pochepko.services.main;
+package by.pochepko.services;
 
 import by.pochepko.model.Promocode;
-import by.pochepko.services.DBService;
-import by.pochepko.services.PromocodeApplier;
-import by.pochepko.services.PromocodeApplierFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

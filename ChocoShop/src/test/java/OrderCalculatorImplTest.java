@@ -1,9 +1,9 @@
 import by.pochepko.model.Basket;
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.OrderLine;
+import by.pochepko.services.OrderCalculatorImpl;
 import by.pochepko.services.PromocodeApplier;
 import by.pochepko.services.TaxesCalculator;
-import by.pochepko.services.main.OrderCalculatorImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -1,8 +1,6 @@
-package by.pochepko.services.main;
+package by.pochepko.services;
 
 import by.pochepko.model.OrderLine;
-import by.pochepko.services.ChocoStockAligner;
-import by.pochepko.services.DBService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
-package by.pochepko.services.main;
+package by.pochepko.services;
 
-import by.pochepko.services.TaxesCalculator;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

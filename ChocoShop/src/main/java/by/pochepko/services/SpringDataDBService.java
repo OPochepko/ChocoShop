@@ -1,4 +1,4 @@
-package by.pochepko.services.main;
+package by.pochepko.services;
 
 import by.pochepko.DAO.ChocolateCrudRepository;
 import by.pochepko.DAO.PromocodeCrudRepository;
@@ -6,7 +6,6 @@ import by.pochepko.DAO.StockCrudRepository;
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.Promocode;
 import by.pochepko.model.Stock;
-import by.pochepko.services.DBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

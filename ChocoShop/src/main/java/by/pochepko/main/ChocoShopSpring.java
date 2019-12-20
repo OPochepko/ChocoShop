@@ -2,9 +2,9 @@ package by.pochepko.main;
 
 import by.pochepko.model.Basket;
 import by.pochepko.model.OrderLine;
+import by.pochepko.services.DBChocoStockAligner;
 import by.pochepko.services.OrderCalculator;
-import by.pochepko.services.main.DBChocoStockAligner;
-import by.pochepko.services.main.SpringDataDBService;
+import by.pochepko.services.SpringDataDBService;
 import by.pochepko.springcfg.DBChocoShopConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
