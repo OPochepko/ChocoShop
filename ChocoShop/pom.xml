@@ -163,6 +163,19 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>6.1.2</version>
+                <configuration>
+                    <url>jdbc:postgresql://localhost:5432/ChocoShopDB</url>
+                    <user>postgres</user>
+                    <password>3211385</password>
+                </configuration>
+                <dependencies>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 
