@@ -25,7 +25,7 @@ public class FixDiscountPromocodeApplier implements PromocodeApplier {
             return cost;
         } else {
             logger.info("promocode =" + promocode);
-            int costWithPromo = cost * -promocode.getFixDiscount();
+            int costWithPromo = cost - promocode.getFixDiscount();
             return costWithPromo;
         }
     }

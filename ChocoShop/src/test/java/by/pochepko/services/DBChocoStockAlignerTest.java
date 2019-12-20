@@ -1,9 +1,7 @@
-package by.pochepko.services.main;
+package by.pochepko.services;
 
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.OrderLine;
-import by.pochepko.services.DBChocoStockAligner;
-import by.pochepko.services.DBService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

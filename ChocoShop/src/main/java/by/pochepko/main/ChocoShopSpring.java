@@ -14,6 +14,7 @@ public class ChocoShopSpring {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(DBChocoShopConfiguration.class);
         SpringDataDBService dbService = context.getBean(SpringDataDBService.class);
+        //test run
         dbService.readPromocodes();
         dbService.readChocolates();
         DBChocoStockAligner dbChocoStockAligner = context.getBean(DBChocoStockAligner.class);
