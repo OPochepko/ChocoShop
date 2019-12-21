@@ -183,8 +183,6 @@
                     <user>postgres</user>
                     <password>3211385</password>
                 </configuration>
-                <dependencies>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
