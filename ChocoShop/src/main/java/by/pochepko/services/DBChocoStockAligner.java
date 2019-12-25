@@ -1,6 +1,7 @@
 package by.pochepko.services;
 
 import by.pochepko.model.OrderLine;
+import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class DBChocoStockAligner implements ChocoStockAligner {
 
     @Override
     public OrderLine alignOrderLineWithStock(OrderLine orderLine) {
+        Validate.notNull(orderLine, "Order should not be NULL");
         int stockQuantity = dbService.getStockQuantityByChocolate(orderLine.getChocolate());
 
         logger.debug(String.format("OrderLine quantity =  %d, stockQuantity =  %d.", orderLine.getQuantity(), stockQuantity));

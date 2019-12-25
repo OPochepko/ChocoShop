@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 /**
- * Implementation of {@link PromocodeApplierFactory} and {@link ApplicationContextAware}: gives implementation
+ * Implementation of {@link PromocodeApplierFactory} and {@link ApplicationContextAware}: gives bean
  * of {@link PromocodeApplier} that suitable for given promocode.
  * Automatically search for {@link PromocodeApplier} beans in ApplicationContex by promocode.
  * Bean name of {@link PromocodeApplier} bean should start from simple class name of given promocode with suffix
@@ -20,16 +20,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SpringPromocodeApplierFactoryImpl implements PromocodeApplierFactory, ApplicationContextAware {
-    /** ApplicationContext that this object runs in */
+    /**
+     * ApplicationContext that this object runs in
+     */
     private ApplicationContext context;
-    /** Promocode to apply*/
+    /**
+     * Promocode to apply
+     */
     private Promocode promocode;
-    /** Service to excess data base*/
+    /**
+     * Service to excess data base
+     */
     @Autowired
     private DBService dbService;
 
     /**
-     *
      * @param code - code of {@link Promocode} to get suitable PromocodeApplier bean for
      * @return PromocodeApplier bean for this promocode
      */
@@ -47,6 +52,7 @@ public class SpringPromocodeApplierFactoryImpl implements PromocodeApplierFactor
 
     /**
      * Set ApplicationContext that this object runs in
+     *
      * @throws BeansException
      */
     @Override
