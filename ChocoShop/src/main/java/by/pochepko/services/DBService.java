@@ -27,6 +27,6 @@ public interface DBService {
     Chocolate saveChocolate(Chocolate chocolate);
 
     @Transactional
-    Optional<Chocolate> findChocolateById(int id);
+    Optional<Chocolate> findChocolateById(long id);
 
 }

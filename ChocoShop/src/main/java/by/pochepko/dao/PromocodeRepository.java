@@ -1,10 +1,10 @@
-package by.pochepko.DAO;
+package by.pochepko.dao;
 
 import by.pochepko.model.Promocode;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PromocodeCrudRepository extends CrudRepository<Promocode, Integer> {
+public interface PromocodeRepository extends CrudRepository<Promocode, Long> {
     Promocode findByCode(String code);
 }

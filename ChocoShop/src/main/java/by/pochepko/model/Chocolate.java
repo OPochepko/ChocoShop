@@ -2,17 +2,14 @@ package by.pochepko.model;
 
 import com.google.common.base.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "chocolate")
 public class Chocolate {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     private int price;
 
@@ -43,11 +40,11 @@ public class Chocolate {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    private void setId(int id) {
+    private void setId(long id) {
         this.id = id;
     }
 

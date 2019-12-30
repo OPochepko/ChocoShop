@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @ComponentScan(basePackages = "by.pochepko.services")
 @Configuration
-@EnableJpaRepositories("by.pochepko.DAO")
+@EnableJpaRepositories("by.pochepko.dao")
 
 
 public class DBChocoShopConfiguration {
@@ -26,7 +26,7 @@ public class DBChocoShopConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("by.pochepko");
+        sessionFactory.setPackagesToScan("by.pochepko.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;

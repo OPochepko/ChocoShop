@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @OneToOne
     @JoinColumn(name = "id")
@@ -34,11 +34,11 @@ public class Stock {
         this.quantity = quantity;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    private void setId(int id) {
+    private void setId(long id) {
         this.id = id;
     }
 

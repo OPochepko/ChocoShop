@@ -14,23 +14,25 @@ public class FixDiscountPromocodeApplier implements PromocodeApplier {
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    private FixDiscontPromocode promocode;
 
     @Override
-    public int applyPromoCode(int cost) {
+    public int applyPromoCode(int cost, Promocode promocode) {
+        FixDiscontPromocode fixDiscontPromocode = (FixDiscontPromocode) promocode;
         Validate.inclusiveBetween(0, Integer.MAX_VALUE, cost, "Cost must be not negative: %d", cost);
 
-        if (promocode == null) {
+        if (fixDiscontPromocode == null) {
             logger.info("promocode = NULL");
             return cost;
         } else {
-            logger.info("promocode =" + promocode);
-            int costWithPromo = cost - promocode.getFixDiscount();
+            logger.info("promocode =" + fixDiscontPromocode);
+            int costWithPromo = cost - fixDiscontPromocode.getFixDiscount();
             return costWithPromo;
         }
     }
 
-    public void setPromocode(Promocode promocode) {
-        this.promocode = (FixDiscontPromocode) promocode;
+    @Override
+    public Class<? extends Promocode> compitableWith() {
+        return FixDiscontPromocode.class;
     }
+
 }

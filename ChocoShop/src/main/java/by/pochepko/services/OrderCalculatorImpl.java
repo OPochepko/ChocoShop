@@ -2,6 +2,7 @@ package by.pochepko.services;
 
 import by.pochepko.model.Basket;
 import by.pochepko.model.OrderLine;
+import by.pochepko.model.Promocode;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +20,18 @@ public class OrderCalculatorImpl implements OrderCalculator {
     @Autowired
     private PromocodeApplierFactory promocodeApplierFactory;
 
+    @Autowired
+    private DBService dbService;
+
     private PromocodeApplier promocodeApplier;
 
     @Override
     public int calculateOrderPrice(Basket basket) {
         Validate.notNull(basket, "The basket must not be %s", null);
 
-        promocodeApplier = promocodeApplierFactory.getPromocodeApplier(basket.getPromoCode());
+        Promocode promocode = dbService.getPromocodeByCode(basket.getPromoCode());
+
+        promocodeApplier = promocodeApplierFactory.getPromocodeApplier(promocode.getClass());
 
         int finalCost = 0;
 
@@ -33,7 +39,7 @@ public class OrderCalculatorImpl implements OrderCalculator {
             finalCost += taxesCalculator.calculateTaxes(orderLine.getTotalPrice());
         }
 
-        finalCost = promocodeApplier.applyPromoCode(finalCost);
+        finalCost = promocodeApplier.applyPromoCode(finalCost, promocode);
         logger.info("Basket: " + basket.toString() + "finalCost = " + finalCost);
         return finalCost;
     }

@@ -14,10 +14,10 @@ public class PercentDiscountPromocodeApplier implements PromocodeApplier {
 
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    private PercentDiscountPromocode promocode;
 
     @Override
-    public int applyPromoCode(int cost) {
+    public int applyPromoCode(int cost, Promocode promocode) {
+        PercentDiscountPromocode percentDiscountPromocode = (PercentDiscountPromocode) promocode;
 
         Validate.inclusiveBetween(0, Integer.MAX_VALUE, cost, "Cost must be not negative: %d", cost);
 
@@ -25,13 +25,15 @@ public class PercentDiscountPromocodeApplier implements PromocodeApplier {
             logger.info("promocode = NULL");
             return cost;
         } else {
-            int costWithPromo = cost * (100 - promocode.getPercentDiscount()) / 100;
+            int costWithPromo = cost * (100 - percentDiscountPromocode.getPercentDiscount()) / 100;
             logger.info("promocode =" + promocode);
             return costWithPromo;
         }
+
     }
 
-    public void setPromocode(Promocode promocode) {
-        this.promocode = (PercentDiscountPromocode) promocode;
+    @Override
+    public Class<? extends Promocode> compitableWith() {
+        return PercentDiscountPromocode.class;
     }
 }

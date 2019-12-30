@@ -1,8 +1,8 @@
 package by.pochepko.services;
 
-import by.pochepko.DAO.ChocolateCrudRepository;
-import by.pochepko.DAO.PromocodeCrudRepository;
-import by.pochepko.DAO.StockCrudRepository;
+import by.pochepko.dao.ChocolateRepository;
+import by.pochepko.dao.PromocodeRepository;
+import by.pochepko.dao.StockRepository;
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.Promocode;
 import by.pochepko.model.Stock;
@@ -16,48 +16,48 @@ import java.util.Optional;
 public class SpringDataDBService implements DBService {
 
     @Autowired
-    private PromocodeCrudRepository promocodeCrudRepository;
+    private PromocodeRepository promocodeRepository;
     @Autowired
-    private ChocolateCrudRepository chocolateCrudRepository;
+    private ChocolateRepository chocolateRepository;
     @Autowired
-    private StockCrudRepository stockCrudRepository;
+    private StockRepository stockRepository;
 
 
     @Transactional
     public Iterable<Promocode> readPromocodes() {
-        return promocodeCrudRepository.findAll();
+        return promocodeRepository.findAll();
     }
 
     @Override
     public Iterable<Stock> loadStock() {
-        return stockCrudRepository.findAll();
+        return stockRepository.findAll();
     }
 
     @Transactional
     public Iterable<Chocolate> readChocolates() {
-        return chocolateCrudRepository.findAll();
+        return chocolateRepository.findAll();
     }
 
     @Override
     public Promocode getPromocodeByCode(String code) {
-        return promocodeCrudRepository.findByCode(code);
+        return promocodeRepository.findByCode(code);
     }
 
     @Override
     public int getStockQuantityByChocolate(Chocolate chocolate) {
-        return stockCrudRepository.findStockByChocolate(chocolate).getQuantity();
+        return stockRepository.findStockByChocolate(chocolate).getQuantity();
     }
 
     @Override
     public Chocolate saveChocolate(Chocolate chocolate) {
-        Chocolate save = chocolateCrudRepository.save(chocolate);
+        Chocolate save = chocolateRepository.save(chocolate);
         System.out.println(save);
         return save;
     }
 
     @Override
-    public Optional<Chocolate> findChocolateById(int id) {
-        return chocolateCrudRepository.findById(id);
+    public Optional<Chocolate> findChocolateById(long id) {
+        return chocolateRepository.findById(id);
     }
 
 

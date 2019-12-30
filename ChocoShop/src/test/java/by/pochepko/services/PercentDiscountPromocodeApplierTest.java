@@ -1,7 +1,6 @@
 package by.pochepko.services;
 
 import by.pochepko.model.PercentDiscountPromocode;
-import by.pochepko.model.Promocode;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,7 +26,7 @@ class PercentDiscountPromocodeApplierTest {
         Mockito.when(promocode.getPercentDiscount()).thenReturn(10);
 
         //when
-        int costAfterPromocodeApplied = sut.applyPromoCode(200);
+        int costAfterPromocodeApplied = sut.applyPromoCode(200, promocode);
 
         //then
         assertThat(costAfterPromocodeApplied).isEqualTo(180);
@@ -37,12 +36,11 @@ class PercentDiscountPromocodeApplierTest {
     @Test
     void applyPromocode_givenNullPromocodeAndCostTwoHundred_costAfterPromocodeAppliedShoulBeTwoHundred() {
         //given
-        Promocode promocode = null;
+        promocode = null;
         int cost = 200;
-        sut.setPromocode(promocode);
 
         //when
-        int costAfterPromocodeApplied = sut.applyPromoCode(cost);
+        int costAfterPromocodeApplied = sut.applyPromoCode(cost, promocode);
 
         //then
         assertThat(costAfterPromocodeApplied).isEqualTo(200);
@@ -52,10 +50,12 @@ class PercentDiscountPromocodeApplierTest {
     void applyPromocode_givenNegativeCost_ShouldThrowException() {
         //given
         int cost = -100;
+        promocode = null;
+
 
         //when - then throw Exception
         assertThatThrownBy(() -> {
-            sut.applyPromoCode(cost);
+            sut.applyPromoCode(cost, promocode);
         }).isInstanceOf(IllegalArgumentException.class).hasMessage("Cost must be not negative: -100");
     }
 
