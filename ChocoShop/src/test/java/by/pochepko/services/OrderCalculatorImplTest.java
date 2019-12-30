@@ -1,5 +1,6 @@
 package by.pochepko.services;
 
+import by.pochepko.dao.PromocodeRepository;
 import by.pochepko.model.Basket;
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.OrderLine;
@@ -22,8 +23,9 @@ class OrderCalculatorImplTest {
 
     @Mock
     private PromocodeApplierFactory promocodeApplierFactory;
+
     @Mock
-    private DBService dbService;
+    PromocodeRepository promocodeRepository;
 
     @Mock
     private PromocodeApplier promoCodeApplier;
@@ -41,9 +43,8 @@ class OrderCalculatorImplTest {
         basket.setPromoCode("Decimation");
         basket.put(new OrderLine(new Chocolate(25, "TWINX"), 5));
         basket.put(new OrderLine(new Chocolate(10, "BOUNCY"), 8));
-        Mockito.when(dbService.getPromocodeByCode(basket.getPromoCode())).thenReturn(promocode);
         Mockito.when(promocodeApplierFactory.getPromocodeApplier(promocode.getClass())).thenReturn(promoCodeApplier);
-
+        Mockito.when(promocodeRepository.findByCode(basket.getPromoCode())).thenReturn(promocode);
         Mockito.when(promoCodeApplier.applyPromoCode(100, promocode))
                 .thenReturn(200);
         Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);

@@ -1,5 +1,6 @@
 package by.pochepko.services;
 
+import by.pochepko.dao.PromocodeRepository;
 import by.pochepko.model.Basket;
 import by.pochepko.model.OrderLine;
 import by.pochepko.model.Promocode;
@@ -21,7 +22,7 @@ public class OrderCalculatorImpl implements OrderCalculator {
     private PromocodeApplierFactory promocodeApplierFactory;
 
     @Autowired
-    private DBService dbService;
+    PromocodeRepository promocodeRepository;
 
     private PromocodeApplier promocodeApplier;
 
@@ -29,7 +30,7 @@ public class OrderCalculatorImpl implements OrderCalculator {
     public int calculateOrderPrice(Basket basket) {
         Validate.notNull(basket, "The basket must not be %s", null);
 
-        Promocode promocode = dbService.getPromocodeByCode(basket.getPromoCode());
+        Promocode promocode = promocodeRepository.findByCode(basket.getPromoCode());
 
         promocodeApplier = promocodeApplierFactory.getPromocodeApplier(promocode.getClass());
 

@@ -1,7 +1,9 @@
 package by.pochepko.services;
 
+import by.pochepko.dao.StockRepository;
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.OrderLine;
+import by.pochepko.model.Stock;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,14 +21,18 @@ class DBChocoStockAlignerTest {
     DBChocoStockAligner sut;
 
     @Mock
-    DBService dbService;
+    StockRepository stockRepository;
+
+    @Mock
+    Stock stock;
 
     @Test
     void alignOrderLineWithStock_givenOrderlineQuantityIsOneHundredAndStockQuantityIsFifty_afterAligneOerdeQuantatyShouldBeFifty() {
 
         // given
         OrderLine orderLine = new OrderLine(new Chocolate(25, "Twinx"), 100);
-        Mockito.when(dbService.getStockQuantityByChocolate(Mockito.any(Chocolate.class))).thenReturn(50);
+        Mockito.when(stockRepository.findStockByChocolate(Mockito.any(Chocolate.class))).thenReturn(stock);
+        Mockito.when(stock.getQuantity()).thenReturn(50);
 
         //when
         orderLine = sut.alignOrderLineWithStock(orderLine);
@@ -52,10 +58,11 @@ class DBChocoStockAlignerTest {
     }
 
     @Test
-    void alignOrderLineWithStock_gevenOrderLineQuantityIsOneHundredAndStockIsOneHundred() {
+    void alignOrderLineWithStock_givenOrderLineQuantityIsOneHundredAndStockIsOneHundred_QuantityShouldBeOneHundred() {
         // given
         OrderLine orderLine = new OrderLine(new Chocolate(25, "Twinx"), 100);
-        Mockito.when(dbService.getStockQuantityByChocolate(Mockito.any(Chocolate.class))).thenReturn(100);
+        Mockito.when(stockRepository.findStockByChocolate(Mockito.any(Chocolate.class))).thenReturn(stock);
+        Mockito.when(stock.getQuantity()).thenReturn(100);
 
         //when
         orderLine = sut.alignOrderLineWithStock(orderLine);

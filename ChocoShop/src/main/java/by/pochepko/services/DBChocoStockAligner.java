@@ -1,5 +1,6 @@
 package by.pochepko.services;
 
+import by.pochepko.dao.StockRepository;
 import by.pochepko.model.OrderLine;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
@@ -12,20 +13,21 @@ import java.lang.invoke.MethodHandles;
 @Service
 public class DBChocoStockAligner implements ChocoStockAligner {
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
     @Autowired
-    private DBService dbService;
+    StockRepository stock;
+
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 
     @Override
     public OrderLine alignOrderLineWithStock(OrderLine orderLine) {
         Validate.notNull(orderLine, "Order should not be NULL");
-        int stockQuantity = dbService.getStockQuantityByChocolate(orderLine.getChocolate());
+
+        int stockQuantity = stock.findStockByChocolate(orderLine.getChocolate()).getQuantity();
 
         logger.debug(String.format("OrderLine quantity =  %d, stockQuantity =  %d.", orderLine.getQuantity(), stockQuantity));
 
-        if (orderLine.getQuantity() > dbService.getStockQuantityByChocolate(orderLine.getChocolate())) {
+        if (orderLine.getQuantity() > stockQuantity) {
             logger.debug("Not enough chocolate in stock. Quantity will be aligned with stock.");
             orderLine.setQuantity(stockQuantity);
         }
