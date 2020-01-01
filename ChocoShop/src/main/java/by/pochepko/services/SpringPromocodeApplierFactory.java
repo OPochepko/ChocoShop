@@ -11,8 +11,6 @@ import static java.util.stream.Collectors.toMap;
 @Service
 public class SpringPromocodeApplierFactory implements PromocodeApplierFactory {
 
-    private Promocode promocode;
-
     private Map<Class<?>, PromocodeApplier> registeredAppliers;
 
     public SpringPromocodeApplierFactory(ApplicationContext context) {

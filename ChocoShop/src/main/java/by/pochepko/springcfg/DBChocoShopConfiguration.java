@@ -1,9 +1,12 @@
 package by.pochepko.springcfg;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -18,9 +21,13 @@ import java.util.Properties;
 @ComponentScan(basePackages = "by.pochepko.services")
 @Configuration
 @EnableJpaRepositories("by.pochepko.dao")
+@PropertySource("classpath:datasource.properties")
 
 
 public class DBChocoShopConfiguration {
+
+    @Autowired
+    Environment env;
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
@@ -35,11 +42,10 @@ public class DBChocoShopConfiguration {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/ChocoShopDB");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("3211385");
-
+        dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
+        dataSource.setUrl(env.getProperty("spring.datasource.url"));
+        dataSource.setUsername(env.getProperty("spring.datasource.username"));
+        dataSource.setPassword(env.getProperty("spring.datasource.password"));
         return dataSource;
     }
 
