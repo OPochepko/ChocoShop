@@ -19,6 +19,7 @@ public class SpringPromocodeApplierFactory implements PromocodeApplierFactory {
                 .values()
                 .stream()
                 .collect(toMap(PromocodeApplier::compitableWith, r -> r));
+        System.out.printf("____________FACTORY ON LINE__________________");
 
     }
 

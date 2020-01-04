@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChocolateRepository extends CrudRepository<Chocolate, Long> {
+
 }
