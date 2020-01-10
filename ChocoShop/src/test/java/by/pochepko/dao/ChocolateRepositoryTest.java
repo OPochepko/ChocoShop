@@ -1,7 +1,7 @@
 package by.pochepko.dao;
 
 
-import by.pochepko.main.SpringBtApplication;
+import by.pochepko.SpringBtApplication;
 import com.google.common.collect.Iterators;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

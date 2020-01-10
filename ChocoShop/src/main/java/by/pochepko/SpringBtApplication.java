@@ -1,4 +1,4 @@
-package by.pochepko.main;
+package by.pochepko;
 
 
 import org.springframework.boot.SpringApplication;

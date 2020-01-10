@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Chocolates</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Chocolates</h1>
+<a href="addChocolate">Add Chocolate</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="chocolate : ${chocolateList}">
+            <td th:utext="${chocolate.id}">...</td>
+            <td th:utext="${chocolate.name}">...</td>
+            <td th:utext="${chocolate.price}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
