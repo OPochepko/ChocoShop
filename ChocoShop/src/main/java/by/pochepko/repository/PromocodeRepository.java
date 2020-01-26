@@ -1,4 +1,4 @@
-package by.pochepko.dao;
+package by.pochepko.repository;
 
 import by.pochepko.model.Promocode;
 import org.springframework.data.repository.CrudRepository;

@@ -1,9 +1,9 @@
-package by.pochepko.services;
+package by.pochepko.service;
 
-import by.pochepko.dao.PromocodeRepository;
 import by.pochepko.model.Basket;
 import by.pochepko.model.OrderLine;
 import by.pochepko.model.Promocode;
+import by.pochepko.repository.PromocodeRepository;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

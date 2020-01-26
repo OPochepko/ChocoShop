@@ -1,10 +1,10 @@
-package by.pochepko.services;
+package by.pochepko.service;
 
-import by.pochepko.dao.PromocodeRepository;
 import by.pochepko.model.Basket;
 import by.pochepko.model.Chocolate;
 import by.pochepko.model.OrderLine;
 import by.pochepko.model.Promocode;
+import by.pochepko.repository.PromocodeRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

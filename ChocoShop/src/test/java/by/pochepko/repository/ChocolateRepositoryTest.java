@@ -1,4 +1,4 @@
-package by.pochepko.dao;
+package by.pochepko.repository;
 
 
 import by.pochepko.SpringBtApplication;

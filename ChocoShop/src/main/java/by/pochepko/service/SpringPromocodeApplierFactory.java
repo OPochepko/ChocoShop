@@ -1,4 +1,4 @@
-package by.pochepko.services;
+package by.pochepko.service;
 
 import by.pochepko.model.Promocode;
 import org.springframework.context.ApplicationContext;
@@ -19,7 +19,6 @@ public class SpringPromocodeApplierFactory implements PromocodeApplierFactory {
                 .values()
                 .stream()
                 .collect(toMap(PromocodeApplier::compitableWith, r -> r));
-        System.out.printf("____________FACTORY ON LINE__________________");
 
     }
 

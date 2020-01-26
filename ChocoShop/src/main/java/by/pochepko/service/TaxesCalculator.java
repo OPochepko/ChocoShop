@@ -1,4 +1,4 @@
-package by.pochepko.services;
+package by.pochepko.service;
 
 public interface TaxesCalculator {
 
