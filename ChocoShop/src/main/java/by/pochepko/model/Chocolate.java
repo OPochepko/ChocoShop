@@ -11,9 +11,9 @@ public class Chocolate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private int price;
-
     private String name;
+
+    private int price;
 
     public Chocolate(int price, String name) {
         this.price = price;
@@ -28,7 +28,7 @@ public class Chocolate {
         return price;
     }
 
-    private void setPrice(int price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -36,7 +36,7 @@ public class Chocolate {
         return name;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -44,7 +44,7 @@ public class Chocolate {
         return id;
     }
 
-    private void setId(long id) {
+    void setId(long id) {
         this.id = id;
     }
 
