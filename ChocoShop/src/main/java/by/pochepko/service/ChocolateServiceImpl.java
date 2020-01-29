@@ -1,6 +1,6 @@
 package by.pochepko.service;
 
-import by.pochepko.model.Chocolate;
+import by.pochepko.dto.ChocolateDto;
 import by.pochepko.repository.ChocolateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,29 +13,33 @@ import java.util.stream.StreamSupport;
 public class ChocolateServiceImpl implements ChocolateService {
 
     @Autowired
+    private ChocolateDtoMapper chocolateMapper;
+    @Autowired
     private ChocolateRepository chocolateRepository;
 
     @Override
-    public List<Chocolate> getChocolateLst() {
+    public List<ChocolateDto> getChocolateLst() {
 
-        return StreamSupport.stream(chocolateRepository.findAll().spliterator(), false).collect(Collectors.toList());
+        return StreamSupport.stream(chocolateRepository.findAll().spliterator(), false)
+                .map(chocolateMapper::modelToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public void updateChocolate(Chocolate chocolate) {
-        chocolateRepository.save(chocolate);
+    public void updateChocolate(ChocolateDto chocolate) {
+        chocolateRepository.save(chocolateMapper.DtoToModel(chocolate));
 
     }
 
     @Override
-    public Chocolate createChocolate(Chocolate chocolate) {
+    public ChocolateDto createChocolate(ChocolateDto chocolate) {
 
-        return chocolateRepository.save(chocolate);
+        return chocolateMapper.modelToDTO(chocolateRepository.save(chocolateMapper.DtoToModel(chocolate)));
     }
 
     @Override
-    public Chocolate getChocolateById(Long id) {
+    public ChocolateDto getChocolateById(Long id) {
 
-        return chocolateRepository.findById(id).get();
+        return chocolateMapper.modelToDTO(chocolateRepository.findById(id).get());
     }
 }

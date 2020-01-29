@@ -1,17 +1,17 @@
 package by.pochepko.service;
 
-import by.pochepko.model.Chocolate;
+import by.pochepko.dto.ChocolateDto;
 
 import java.util.List;
 
 public interface ChocolateService {
 
-    List<Chocolate> getChocolateLst();
+    List<ChocolateDto> getChocolateLst();
 
-    void updateChocolate(Chocolate chocolate);
+    void updateChocolate(ChocolateDto chocolate);
 
-    Chocolate createChocolate(Chocolate chocolate);
+    ChocolateDto createChocolate(ChocolateDto chocolate);
 
-    Chocolate getChocolateById(Long id);
+    ChocolateDto getChocolateById(Long id);
 
 }
