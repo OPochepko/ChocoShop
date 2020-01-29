@@ -21,7 +21,7 @@ public class ChocolateRestController {
     }
 
     @GetMapping(value = "/{id}")
-    public ChocolateDto getChocolateById(@PathVariable("id") final long id) {
+    public ChocolateDto getChocolateById(@PathVariable final long id) {
         return chocolateService.getChocolateById(id);
     }
 
