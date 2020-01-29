@@ -12,6 +12,6 @@ public interface ChocolateService {
 
     ChocolateDto createChocolate(ChocolateDto chocolate);
 
-    ChocolateDto getChocolateById(Long id);
+    ChocolateDto getChocolateById(long id);
 
 }

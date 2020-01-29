@@ -38,7 +38,7 @@ public class ChocolateServiceImpl implements ChocolateService {
     }
 
     @Override
-    public ChocolateDto getChocolateById(Long id) {
+    public ChocolateDto getChocolateById(long id) {
 
         return chocolateMapper.modelToDTO(chocolateRepository.findById(id).get());
     }

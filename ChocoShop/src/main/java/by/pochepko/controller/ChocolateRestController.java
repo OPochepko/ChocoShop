@@ -1,7 +1,6 @@
 package by.pochepko.controller;
 
 import by.pochepko.dto.ChocolateDto;
-import by.pochepko.service.ChocolateDtoMapper;
 import by.pochepko.service.ChocolateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/chocolates")
 public class ChocolateRestController {
-    @Autowired
-    private ChocolateDtoMapper chocolateDtoMapper;
 
     @Autowired
     private ChocolateService chocolateService;
