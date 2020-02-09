@@ -17,7 +17,7 @@ class ChocolateRepositoryTest {
     private ChocolateRepository chocolateRepository;
 
     @Test
-    public void chocolateRepositoryTest_chocolateRepositoryShoulContainTwoElements() {
+    public void chocolateRepositoryTest_chocolateRepositoryShouldContainTwoElements() {
 
         assertThat(Iterators.size(chocolateRepository.findAll().iterator())).isEqualTo(2);
 
