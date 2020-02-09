@@ -1,9 +1,10 @@
-import by.pochepko.Basket;
-import by.pochepko.Chocolate;
-import by.pochepko.OrderLine;
-import by.pochepko.services.OrderCalculatorImpl;
-import by.pochepko.services.TaxesCalculator;
-import by.pochepko.services.XMLPromocodeApplier;
+package by.pochepko.services;
+
+import by.pochepko.dao.PromocodeRepository;
+import by.pochepko.model.Basket;
+import by.pochepko.model.Chocolate;
+import by.pochepko.model.OrderLine;
+import by.pochepko.model.Promocode;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,9 +18,17 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class OrderCalculatorImplTest {
+    @Mock
+    private Promocode promocode;
 
     @Mock
-    private XMLPromocodeApplier promoCodeApplier;
+    private PromocodeApplierFactory promocodeApplierFactory;
+
+    @Mock
+    PromocodeRepository promocodeRepository;
+
+    @Mock
+    private PromocodeApplier promoCodeApplier;
 
     @Mock
     private TaxesCalculator taxesCalculator;
@@ -34,7 +43,9 @@ class OrderCalculatorImplTest {
         basket.setPromoCode("Decimation");
         basket.put(new OrderLine(new Chocolate(25, "TWINX"), 5));
         basket.put(new OrderLine(new Chocolate(10, "BOUNCY"), 8));
-        Mockito.when(promoCodeApplier.applyPromoCode(basket.getPromoCode(), 100))
+        Mockito.when(promocodeApplierFactory.getPromocodeApplier(promocode.getClass())).thenReturn(promoCodeApplier);
+        Mockito.when(promocodeRepository.findByCode(basket.getPromoCode())).thenReturn(promocode);
+        Mockito.when(promoCodeApplier.applyPromoCode(100, promocode))
                 .thenReturn(200);
         Mockito.when(taxesCalculator.calculateTaxes(Mockito.any(Integer.class))).thenReturn(50);
 
@@ -46,7 +57,7 @@ class OrderCalculatorImplTest {
         verify(taxesCalculator, Mockito.times(2))
                 .calculateTaxes(Mockito.any(Integer.class));
         verify(promoCodeApplier, Mockito.times(1))
-                .applyPromoCode(basket.getPromoCode(), 100);
+                .applyPromoCode(100, promocode);
 
     }
 

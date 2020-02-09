@@ -1,8 +1,15 @@
-package by.pochepko;
+package by.pochepko.model;
 
 import com.google.common.base.Objects;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "chocolate")
 public class Chocolate {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     private int price;
 
@@ -13,12 +20,32 @@ public class Chocolate {
         this.name = name;
     }
 
+    public Chocolate() {
+
+    }
+
     public int getPrice() {
         return price;
     }
 
+    private void setPrice(int price) {
+        this.price = price;
+    }
+
     public String getName() {
         return name;
+    }
+
+    private void setName(String name) {
+        this.name = name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    private void setId(long id) {
+        this.id = id;
     }
 
     @Override
@@ -38,7 +65,8 @@ public class Chocolate {
     @Override
     public String toString() {
         return "Chocolate{" +
-                "price=" + price +
+                "id=" + id +
+                ", price=" + price +
                 ", name='" + name + '\'' +
                 '}';
     }
