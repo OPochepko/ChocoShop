@@ -21,10 +21,10 @@ public class ChocolateServiceImpl implements ChocolateService {
     @Transactional
     @Override
     public List<ChocolateDto> getChocolateLst() {
-
         return StreamSupport.stream(chocolateRepository.findAll().spliterator(), false)
                 .map(chocolateMapper::modelToDTO)
                 .collect(Collectors.toList());
+
     }
 
     @Transactional
