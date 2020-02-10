@@ -3,21 +3,17 @@ package by.pochepko.controller;
 import by.pochepko.dto.ChocolateDto;
 import by.pochepko.service.ChocolateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@EnableWebSecurity
 @RequestMapping(value = "/chocolates")
 public class ChocolateRestController {
 
     @Autowired
     private ChocolateService chocolateService;
 
-    @PreAuthorize("!hasAuthority('ADMIN')")
     @GetMapping
     public List<ChocolateDto> getChocolates() {
         return chocolateService.getChocolateLst();
